@@ -5,6 +5,7 @@
 #### Technologies used:
 
   - React
+  - React Router
   - Redux
   - Firebase
   - PDF Generator for react
