@@ -20,16 +20,6 @@ const ProfessionalServices = () => (
           <li>Doc 6</li>
           <li>Doc 1</li>
           <li>Doc 2</li>
-          <li>Doc 3</li>
-          <li>Doc 4</li>
-          <li>Doc 5</li>
-          <li>Doc 6</li>
-          <li>Doc 1</li>
-          <li>Doc 2</li>
-          <li>Doc 3</li>
-          <li>Doc 4</li>
-          <li>Doc 5</li>
-          <li>Doc 6</li>
         </ul>
       </div>
       <div className="col-sm-4">
@@ -44,7 +34,8 @@ const ProfessionalServices = () => (
           <li>Doc 7</li>
         </ul>
       </div>
-      <div className="col-sm-8">
+      <hr />
+      <div className="col-sm-8 w-100">
         <h5>Professional Services New Trip Record Form</h5>
         <a href="#">Link Provided Here</a>
         <h5>Hardware Installation Trip Report</h5>

@@ -10,33 +10,27 @@ body {
 
 .container-fluid {
   margin: 30px;
-  /* margin-left: 50px; */
 }
-
-/* h4 {
-  font-size: 50px;
-  padding: 0, 5px, 0px, 5px;
-} */
-
 .col-sm-4 {
-  /* margin: 5px; */
   margin-left: 10px;
   padding: 10px;
-  border: 1px solid black;
-  /* overflow-wrap: break-word; */
+  /* border: 1px solid black; */
+  border-style: double;
   overflow-wrap: break-word;
   font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .col-sm-8 {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-style: double;
   margin: 10px;
   margin-left: 10px;
-  /* padding-right: 40px; */
   padding: 5px;
   font-size: 14px;
-  /* display: flex; */
 }
+
+/* ==================================== */
 
 /* .container {
   display: flex;
