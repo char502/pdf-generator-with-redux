@@ -1,2 +1,10 @@
 # PDF Generator
 ## Generates a PDF based on input from a user using a form
+
+### An application that enables the user to generate a pdf based on some input choices
+#### Technologies used:
+
+  - React
+  - Redux
+  - Firebase
+  - PDF Generator for react
