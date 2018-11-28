@@ -34,12 +34,11 @@ const ProfessionalServices = () => (
           <li>Doc 7</li>
         </ul>
       </div>
-      <hr />
       <div className="col-sm-8 w-100">
         <h5>Professional Services New Trip Record Form</h5>
-        <a href="#">Link Provided Here</a>
+        <a href="link here">Link Provided Here</a>
         <h5>Hardware Installation Trip Report</h5>
-        <a href="#">Link Provided Here</a>
+        <a href="link here">Link Provided Here</a>
       </div>
     </div>
   </div>

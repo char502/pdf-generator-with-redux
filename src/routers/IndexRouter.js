@@ -12,6 +12,11 @@ const IndexRouter = () => (
       <Header />
       <Switch>
         <Route path="/" component={PdfGenMain} exact={true} />
+        <Route
+          path="/RetrievePrevious"
+          component={RetrievePrevious}
+          exact={true}
+        />
         <Route path="/RetrievePrevious/:id" component={RetrievePrevious} />
         {/* poss need '/:id' at end of /RetrievePrevious path, i.e jump to rprev from pdf main - not sure yet */}
         <Route path="/ProfessionalServices" component={ProfessionalServices} />

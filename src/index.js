@@ -3,25 +3,21 @@ import ReactDOM from "react-dom";
 import IndexRouter from "./routers/IndexRouter";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
-// import PdfGenMain from "./components/PdfGenMain";
-// import ProfessionalServices from "./components/ProfessionalServices";
-// import NotFoundPage from "./components/NotFoundPage";
+import configureStore from "./store/configureStore";
 import "./css/index.css";
-// import App from "./App";
-// import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-// import Header from "./components/Header";
 
 //Bootstrap
-// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
+const store = configureStore();
+
 const routerAndStore = (
-  <Provider>
+  <Provider store={store}>
     <IndexRouter />
   </Provider>
 );
 
+console.log(store.getState());
 // ReactDOM.render(<Routes />, document.getElementById("root"));
 
 ReactDOM.render(routerAndStore, document.getElementById("root"));

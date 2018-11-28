@@ -4,6 +4,9 @@ class RetrievePrevious extends React.Component {
   retrieveIDfromDB = () => {
     console.log("form detail retrieved from DB");
   };
+  idProvided = () => {
+    console.log("idProvided button pushed");
+  };
   render() {
     console.log(this.props);
     return (
@@ -18,7 +21,7 @@ class RetrievePrevious extends React.Component {
               type="number"
               id="number"
               placeholder="ID Reference"
-              value="use prop id from db"
+              /* value="use prop id from db" */
               onChange={this.props.idProvided}
             />{" "}
             <input
@@ -31,7 +34,9 @@ class RetrievePrevious extends React.Component {
 
         <hr />
         <hr />
-        <p>Editing the expense with ID of {this.props.match.params.id} </p>
+        <p>
+          Retrieving/Editing the expense with ID of {this.props.match.params.id}{" "}
+        </p>
       </div>
     );
   }
