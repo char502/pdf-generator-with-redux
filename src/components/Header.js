@@ -7,12 +7,12 @@ const Header = () => (
     <NavLink to="/" activeClassName="is-active" exact={true}>
       PDF Gen Main
     </NavLink>
-    {"   "}
-    <NavLink
-      to="/ProfessionalServices"
-      activeClassName="is-active"
-      exact={true}
-    >
+    {`   `}
+    <NavLink to="/RetrievePrevious" activeClassName="is-active">
+      RetrievePrevious
+    </NavLink>
+    {`   `}
+    <NavLink to="/ProfessionalServices" activeClassName="is-active">
       Professional Services
     </NavLink>
   </header>

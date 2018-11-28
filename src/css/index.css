@@ -10,6 +10,7 @@ body {
 
 .container-fluid {
   margin: 30px;
+  /* background-color: aquamarine; */
 }
 .col-sm-4 {
   margin-left: 10px;
@@ -19,6 +20,7 @@ body {
   overflow-wrap: break-word;
   font-size: 14px;
   margin-bottom: 5px;
+  background-color: #deeff5;
 }
 
 .col-sm-8 {
@@ -28,6 +30,7 @@ body {
   margin-left: 10px;
   padding: 5px;
   font-size: 14px;
+  background-color: #deeff5;
 }
 
 /* ==================================== */
