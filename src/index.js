@@ -5,11 +5,14 @@ import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import configureStore from "./store/configureStore";
 import "./css/index.css";
+import { addForm } from "./redux/actions/pdfGenActions";
 
 //Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const store = configureStore();
+
+store.dispatch(addForm({ id: 67 }));
 
 const routerAndStore = (
   <Provider store={store}>

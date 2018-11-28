@@ -35,7 +35,8 @@ class RetrievePrevious extends React.Component {
         <hr />
         <hr />
         <p>
-          Retrieving/Editing the expense with ID of {this.props.match.params.id}{" "}
+          Retrieving/Editing the expense with ID of:{" "}
+          {this.props.match.params.id}{" "}
         </p>
       </div>
     );
