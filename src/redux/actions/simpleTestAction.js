@@ -1,4 +1,4 @@
-export const addForm = ({ id = 0 } = {}) => ({
+export const addForm = () => ({
   type: "SIMPLE_TEST",
   test: ""
 });
