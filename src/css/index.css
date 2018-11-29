@@ -10,9 +10,39 @@ body {
 }
 
 /* PDFGenMain Form Page */
-.PDFGenForm {
+.formContainer {
+  margin: 20px;
+  padding: 20px;
   background-color: #ccc;
 }
+
+div.form-group {
+  border: double black;
+}
+
+label.form-label {
+  padding: 10px;
+}
+
+div.checkbox-group {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+div.checkbox-group label {
+  padding: 10px;
+  border: 1px solid darkgray;
+}
+
+textarea.form-control {
+  /* padding: 0; */
+  width: 70%;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+/* .PDFGenForm {
+  background-color: #ccc;
+} */
 
 .fieldSet {
   background-color: #ccc;

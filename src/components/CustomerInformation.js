@@ -1,9 +1,19 @@
 import React from "react";
 
-const CustomerInformation = () => {
+const CustomerInformation = props => {
+  console.log(props);
   return (
-    <div>
-      <p>Customer Information Component</p>
+    <div className="form-group">
+      <label className="form-label">{props.title}</label>
+      <textarea
+        className="form-control"
+        name={props.name}
+        rows={props.rows}
+        cols={props.cols}
+        value={props.value}
+        onChange={props.handleChange}
+        placeholder={props.placeholder}
+      />
     </div>
   );
 };

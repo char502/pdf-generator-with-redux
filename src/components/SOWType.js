@@ -1,9 +1,33 @@
 import React from "react";
 
-const SOWType = () => {
+const SOWType = props => {
+  console.log(props);
   return (
-    <div>
-      <p>SOW Type Component</p>
+    <div className="form-group">
+      <label htmlFor={props.name} className="form-label">
+        {props.title}
+
+        <h6>{props.subtitle}</h6>
+      </label>
+      <div className="checkbox-group">
+        {props.options.map(option => {
+          return (
+            <label key={option}>
+              <input
+                className="form-checkbox"
+                id={props.name}
+                name={props.name}
+                onChange={props.handleChange}
+                value={option}
+                checked={props.selectedOption.indexOf(option) > -1}
+                type="checkbox"
+              />{" "}
+              {option}
+              <br />
+            </label>
+          );
+        })}
+      </div>
     </div>
   );
 };
