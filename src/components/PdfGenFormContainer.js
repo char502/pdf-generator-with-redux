@@ -10,6 +10,7 @@ class PdfGenFormContainer extends React.Component {
     this.state = {
       id: null,
       serviceRegion: ["EMEA", "APAC", "NA & LATAM"],
+      areaSelectedOption: ["EMEA"],
       customerInformation: "",
       sowType: [
         "ProductSow",
@@ -32,10 +33,27 @@ class PdfGenFormContainer extends React.Component {
     console.log("handleClearForm Clicked");
   }
 
-  handleTextArea() {
+  handleTextArea(e) {
     console.log("handleTextArea Clicked");
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        customerInformation: value
+      }),
+      () => console.log(this.state.customerInformation)
+    );
   }
-  // handleCheckBox(e) {
+
+  // this.setState(
+  //     prevState => ({
+  //       newUser: {
+  //         ...prevState.newUser,
+  //         about: value
+  //       }
+  //     }),
+  //     () => console.log(this.state.newUser)
+  //   );
+  //   handleRadioBtns(e) {
   //   const areaCheckSelection = e.target.value;
   //   let newCheckSelectionArray;
 
@@ -88,9 +106,9 @@ class PdfGenFormContainer extends React.Component {
           <ServiceRegionRadioBtns
             title={"Service Region"}
             name={"Service Region"}
-            /* areaoptions={this.state.serviceRegion}
-            selectedOption={this.state.areaSelectedOption}
-            handleChangeArea={this.handleCheckBox} */
+            options={this.state.serviceRegion}
+            radioselectedoption={this.state.areaSelectedOption}
+            handleChangeRadio={this.handleRadioBtns}
           />
           <CustomerInformation
             title={"Customer Information"}
@@ -109,24 +127,6 @@ class PdfGenFormContainer extends React.Component {
             handleChange={this.handleSOWTypeCheckbox}
           />
         </form>
-
-        <hr />
-        <hr />
-
-        {/* <form className="PDFGenForm">
-          <fieldset className="fieldSet">
-            <legend className="legend">Service Region</legend>
-            <ServiceRegion />
-          </fieldset>
-          <fieldset className="fieldSet">
-            <legend className="legend">Customer Information</legend>
-            <CustomerInformation />
-          </fieldset>
-          <fieldset className="fieldSet">
-            <legend className="legend">SOW Type</legend>
-            <SowType />
-          </fieldset>
-        </form> */}
       </div>
     );
   }

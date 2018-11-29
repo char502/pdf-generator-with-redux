@@ -22,6 +22,30 @@ div.form-group {
 
 label.form-label {
   padding: 10px;
+  font-size: 20px;
+}
+
+div.radio-group {
+  /* padding: 5px; */
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+div.radio-group label {
+  padding: 10px;
+  border: 1px solid darkgray;
+}
+
+input#Service Region.form-radiobuttons {
+  /* padding: 50px; */
+  margin-right: 10px;
+}
+
+textarea.form-control {
+  /* padding: 0; */
+  width: 70%;
+  margin-left: 30px;
+  margin-bottom: 20px;
 }
 
 div.checkbox-group {
@@ -34,46 +58,12 @@ div.checkbox-group label {
   border: 1px solid darkgray;
 }
 
-textarea.form-control {
-  /* padding: 0; */
-  width: 70%;
-  margin-left: 30px;
-  margin-bottom: 20px;
-}
-/* .PDFGenForm {
-  background-color: #ccc;
-} */
-
-.fieldSet {
-  background-color: #ccc;
-  max-width: 500px;
-  padding: 16px;
-  margin-left: 16px;
-  border: 3px double;
-
-  /* display: block;
-  margin-left: 2px;
-  margin-right: 2px;
-  padding-top: 0.35em;
-  padding-bottom: 0.625em;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-  border: 2px groove (internal value); */
-}
-
-.legend {
-  margin: 0px;
-  width: 155px;
-  font-size: 15px;
-}
-
 /* Retrieve Previous page */
 /* CSS goes here */
 
 /* Professional Services Page */
 .container-fluid {
   margin: 30px;
-  /* background-color: aquamarine; */
 }
 .col-sm-4 {
   margin-left: 10px;

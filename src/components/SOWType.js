@@ -6,7 +6,6 @@ const SOWType = props => {
     <div className="form-group">
       <label htmlFor={props.name} className="form-label">
         {props.title}
-
         <h6>{props.subtitle}</h6>
       </label>
       <div className="checkbox-group">
@@ -21,9 +20,8 @@ const SOWType = props => {
                 value={option}
                 checked={props.selectedOption.indexOf(option) > -1}
                 type="checkbox"
-              />{" "}
+              />
               {option}
-              <br />
             </label>
           );
         })}
