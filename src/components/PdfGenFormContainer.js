@@ -10,14 +10,15 @@ class PdfGenFormContainer extends React.Component {
     this.state = {
       id: null,
       serviceRegion: ["EMEA", "APAC", "NA & LATAM"],
-      areaSelectedOption: ["EMEA"],
+      areaSelectedOption: [],
       customerInformation: "",
       sowType: [
         "ProductSow",
         "Teradata Customer SOW",
         "Custom Professional Services SOW"
       ],
-      sowSelectedOption: []
+      sowSelectedOption: [],
+      product_family: []
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
@@ -25,6 +26,19 @@ class PdfGenFormContainer extends React.Component {
     // this.handleCheckBox = this.handleCheckBox.bind(this);
     this.handleSOWTypeCheckbox = this.handleSOWTypeCheckbox.bind(this);
   }
+
+  componentDidMount = () => {
+    this.getProductFamilies();
+  };
+
+  getProductFamilies = () => {
+    fetch("http://localhost:4000/product_familes")
+      .then(response => response.json())
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch(err => console.log(err));
+  };
 
   handleFormSubmit() {
     console.log("handleFormSubmit Clicked");
@@ -98,8 +112,15 @@ class PdfGenFormContainer extends React.Component {
     }
   }
 
+  renderProdFamily = ({ idprod_family, product_family }) => (
+    <div key={idprod_family}>{product_family}</div>
+  );
+
   render() {
+    const { product_family } = this.state;
+
     console.log(this.props);
+
     return (
       <div>
         <form className="formContainer" onSubmit={this.handleFormSubmit}>
@@ -127,6 +148,7 @@ class PdfGenFormContainer extends React.Component {
             handleChange={this.handleSOWTypeCheckbox}
           />
         </form>
+        <div>{product_family.map(this.renderProdFamily)}</div>
       </div>
     );
   }
