@@ -20,7 +20,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:react": "react-scripts start",
+    "start:dev": "nodemon backend/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -37,6 +38,5 @@
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.0",
     "prettier": "^1.15.2"
-  },
-  "proxy": "http://localhost:3306"
+  }
 }
