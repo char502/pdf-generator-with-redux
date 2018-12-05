@@ -25,6 +25,8 @@ class PdfGenFormContainer extends React.Component {
     this.handleTextArea = this.handleTextArea.bind(this);
     // this.handleCheckBox = this.handleCheckBox.bind(this);
     this.handleSOWTypeCheckbox = this.handleSOWTypeCheckbox.bind(this);
+    this.renderProdFamily = this.renderProdFamily.bind(this);
+    this.getProductFamilies = this.getProductFamilies.bind(this);
   }
 
   componentDidMount = () => {
@@ -32,12 +34,12 @@ class PdfGenFormContainer extends React.Component {
   };
 
   getProductFamilies = () => {
-    fetch("http://localhost:4000/product_familes")
+    fetch("http://localhost:4000/sows")
       .then(response => response.json())
       .then(({ data }) => {
         console.log(data);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   };
 
   handleFormSubmit() {
