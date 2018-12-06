@@ -48,14 +48,22 @@ textarea.form-control {
   margin-bottom: 20px;
 }
 
+/* checkbox group */
 div.checkbox-group {
   margin-left: 30px;
   margin-bottom: 20px;
 }
 
+checkbox-group input[type="checkbox"] {
+  position: static;
+  align-self: center;
+  vertical-align: middle;
+  padding: 10px;
+}
+
 div.checkbox-group label {
   padding: 10px;
-  border: 1px solid darkgray;
+  /* border: 1px solid darkgray; */
 }
 
 /* Retrieve Previous page */

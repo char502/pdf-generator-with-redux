@@ -1,7 +1,10 @@
 import React from "react";
 import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
 import CustomerInformation from "./CustomerInformation";
-import SowType from "./SOWType";
+import ProductSow from "./SOW_Type/ProductSow";
+import TeraDataSow from "./SOW_Type/TeraDataSOW";
+import CustomSow from "./SOW_Type/CustomSOW";
+// import SowType from "./SOWType";
 
 class PdfGenFormContainer extends React.Component {
   constructor(props) {
@@ -12,11 +15,14 @@ class PdfGenFormContainer extends React.Component {
       serviceRegion: ["EMEA", "APAC", "NA & LATAM"],
       areaSelectedOption: [],
       customerInformation: "",
-      sowType: [
-        "ProductSow",
-        "Teradata Customer SOW",
-        "Custom Professional Services SOW"
-      ],
+      // sowType: [
+      //   "ProductSow",
+      //   "Teradata Customer SOW",
+      //   "Custom Professional Services SOW"
+      // ],
+      productSow: false,
+      teraData: false,
+      customSow: false,
       sowSelectedOption: [],
       product_families: [],
       productFamilyNew: {
@@ -31,7 +37,10 @@ class PdfGenFormContainer extends React.Component {
     this.renderProdFamilies = this.renderProdFamilies.bind(this);
     this.getProductFamilies = this.getProductFamilies.bind(this);
     this.addProductFamily = this.addProductFamily.bind(this);
-    this.checkForDups = this.checkForDups.bind(this);
+    // this.checkForDups = this.checkForDups.bind(this);
+    this.handleCheckedChangeProduct = this.handleCheckedChangeProduct.bind(
+      this
+    );
   }
   // === SOW Type group ===
   componentDidMount = () => {
@@ -85,6 +94,9 @@ class PdfGenFormContainer extends React.Component {
     );
   }
 
+  handleCheckedChangeProduct(e) {
+    console.log("handleCheckedChangeOne Selected");
+  }
   // this.setState(
   //     prevState => ({
   //       newUser: {
@@ -166,14 +178,29 @@ class PdfGenFormContainer extends React.Component {
             handleChange={this.handleTextArea}
             placeholder={"Enter Customer Information Here"}
           />
-          <SowType
+          <ProductSow
+            name={"Product Sow"}
+            checked={this.state.productSow}
+            onChange={this.handleCheckedChangeProduct}
+          />
+          <TeraDataSow
+            name={"Teradata Customer SOW"}
+            checked={this.teraData}
+            onChange={this.handleCheckedChangeTeraData}
+          />
+          <CustomSow
+            name={"Custom Professional Services SOW"}
+            checked={this.state.productSow}
+            onChange={this.handleCheckedChangeCustomSow}
+          />
+          {/* <SowType
             title={"SOW Type"}
             name={"SOW Type"}
             subtitle={"What type of SOW do you want to generate?"}
             options={this.state.sowType}
             selectedOption={this.state.sowSelectedOption}
             handleChange={this.handleSOWTypeCheckbox}
-          />
+          /> */}
         </form>
         <div>{product_families.map(this.renderProdFamilies)}</div>
         <div>
