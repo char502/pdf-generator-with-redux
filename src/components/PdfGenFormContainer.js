@@ -20,7 +20,7 @@ class PdfGenFormContainer extends React.Component {
       sowSelectedOption: [],
       product_families: [],
       productFamilyNew: {
-        productFamily: ""
+        product_family: ""
       }
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -28,30 +28,44 @@ class PdfGenFormContainer extends React.Component {
     this.handleTextArea = this.handleTextArea.bind(this);
     // this.handleCheckBox = this.handleCheckBox.bind(this);
     this.handleSOWTypeCheckbox = this.handleSOWTypeCheckbox.bind(this);
-    this.renderProdFamily = this.renderProdFamily.bind(this);
+    this.renderProdFamilies = this.renderProdFamilies.bind(this);
     this.getProductFamilies = this.getProductFamilies.bind(this);
     this.addProductFamily = this.addProductFamily.bind(this);
+    this.checkForDups = this.checkForDups.bind(this);
   }
-
+  // === SOW Type group ===
   componentDidMount = () => {
     this.getProductFamilies();
   };
 
   getProductFamilies = () => {
-    fetch("http://localhost:4000/sows")
+    fetch("http://localhost:4000/product_familes")
       .then(response => response.json())
       .then(response => this.setState({ product_families: response.data }))
       .catch(err => console.error(err));
   };
 
+  // checkForDups = () => {
+  //   const { productFamilyNew, product_families } = this.state;
+  //   console.log(product_families.indexOf(productFamilyNew.product_family));
+
+  //   if (product_families.indexOf(productFamilyNew.product_family) === -1) {
+  //     alert("this is a duplicate entry!");
+  //   }
+  // };
+
   addProductFamily = () => {
-    const { productFamilyNew } = this.state;
+    const { productFamilyNew /* product_families */ } = this.state;
     fetch(
-      `http://localhost:4000/sows/add?name=${productFamilyNew.productFamily}`
+      `http://localhost:4000/product_familes/add?product_family=${
+        productFamilyNew.product_family
+      }`
     )
       .then(this.getProductFamilies)
+      // .then(this.checkForDups())
       .catch(err => console.error(err));
   };
+  // === End of SOW Type group ===
 
   handleFormSubmit() {
     // console.log("handleFormSubmit Clicked");
@@ -125,7 +139,7 @@ class PdfGenFormContainer extends React.Component {
     }
   }
 
-  renderProdFamily = ({ idprod_family, product_family }) => (
+  renderProdFamilies = ({ idprod_family, product_family }) => (
     <div key={idprod_family}>{product_family}</div>
   );
 
@@ -161,21 +175,23 @@ class PdfGenFormContainer extends React.Component {
             handleChange={this.handleSOWTypeCheckbox}
           />
         </form>
-        <div>{product_families.map(this.renderProdFamily)}</div>
+        <div>{product_families.map(this.renderProdFamilies)}</div>
         <div>
           <input
             value={productFamilyNew.productFamily}
-            placeholder={"Add new Product Family"}
+            placeholder={"Add New Product Family"}
             onChange={e =>
               this.setState({
                 productFamilyNew: {
                   ...productFamilyNew,
-                  productFamily: e.target.value
+                  product_family: e.target.value
                 }
               })
             }
           />
-          <button onClick={this.addProduct}>Add Product </button>
+          <button onClick={this.addProductFamily}>Add Product Family</button>
+          <br />
+          <br />
         </div>
       </div>
     );
