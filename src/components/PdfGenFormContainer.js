@@ -41,6 +41,12 @@ class PdfGenFormContainer extends React.Component {
     this.handleCheckedChangeProduct = this.handleCheckedChangeProduct.bind(
       this
     );
+    this.handleCheckedChangeTeraData = this.handleCheckedChangeTeraData.bind(
+      this
+    );
+    this.handleCheckedChangeCustomSow = this.handleCheckedChangeCustomSow.bind(
+      this
+    );
   }
   // === SOW Type group ===
   componentDidMount = () => {
@@ -96,6 +102,12 @@ class PdfGenFormContainer extends React.Component {
 
   handleCheckedChangeProduct(e) {
     console.log("handleCheckedChangeOne Selected");
+  }
+  handleCheckedChangeTeraData(e) {
+    console.log("handleCheckedChangeTeraData Selected");
+  }
+  handleCheckedChangeCustomSow(e) {
+    console.log("handleCheckedChangeCustomSow Selected");
   }
   // this.setState(
   //     prevState => ({
@@ -178,21 +190,23 @@ class PdfGenFormContainer extends React.Component {
             handleChange={this.handleTextArea}
             placeholder={"Enter Customer Information Here"}
           />
-          <ProductSow
-            name={"Product Sow"}
-            checked={this.state.productSow}
-            onChange={this.handleCheckedChangeProduct}
-          />
-          <TeraDataSow
-            name={"Teradata Customer SOW"}
-            checked={this.teraData}
-            onChange={this.handleCheckedChangeTeraData}
-          />
-          <CustomSow
-            name={"Custom Professional Services SOW"}
-            checked={this.state.productSow}
-            onChange={this.handleCheckedChangeCustomSow}
-          />
+          <div className="form-group">
+            <ProductSow
+              name={"Product Sow"}
+              checked={this.state.productSow}
+              onChange={this.handleCheckedChangeProduct}
+            />
+            <TeraDataSow
+              name={"Teradata Customer SOW"}
+              checked={this.state.teraData}
+              onChange={this.handleCheckedChangeTeraData}
+            />
+            <CustomSow
+              name={"Custom Professional Services SOW"}
+              checked={this.state.customSow}
+              onChange={this.handleCheckedChangeCustomSow}
+            />
+          </div>
           {/* <SowType
             title={"SOW Type"}
             name={"SOW Type"}

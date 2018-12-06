@@ -4,15 +4,15 @@ class TeraDataSow extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor="Teradata Customer SOW">
-          Product Sow
+        <div className="checked-form-group">
           <input
             name={this.props.name}
             type="checkbox"
             checked={this.props.teraData}
             onChange={this.props.handleCheckedChangeTeraData}
           />
-        </label>
+          <label htmlFor="Teradata Customer SOW">Teradata Customer SOW</label>
+        </div>
       </div>
     );
   }

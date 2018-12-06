@@ -54,12 +54,28 @@ div.checkbox-group {
   margin-bottom: 20px;
 }
 
-checkbox-group input[type="checkbox"] {
+.checked-form-group {
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.checked-form-group label {
+  padding: 10px;
+}
+
+/* .checked.form-group {
   position: static;
   align-self: center;
   vertical-align: middle;
   padding: 10px;
-}
+} */
+
+/* checkbox-group input[type="checkbox"] {
+  position: static;
+  align-self: center;
+  vertical-align: middle;
+  padding: 10px;
+} */
 
 div.checkbox-group label {
   padding: 10px;
