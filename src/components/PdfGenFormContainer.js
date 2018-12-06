@@ -18,7 +18,10 @@ class PdfGenFormContainer extends React.Component {
         "Custom Professional Services SOW"
       ],
       sowSelectedOption: [],
-      product_family: []
+      product_families: [],
+      productFamilyNew: {
+        productFamily: ""
+      }
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
@@ -27,6 +30,7 @@ class PdfGenFormContainer extends React.Component {
     this.handleSOWTypeCheckbox = this.handleSOWTypeCheckbox.bind(this);
     this.renderProdFamily = this.renderProdFamily.bind(this);
     this.getProductFamilies = this.getProductFamilies.bind(this);
+    this.addProductFamily = this.addProductFamily.bind(this);
   }
 
   componentDidMount = () => {
@@ -36,27 +40,34 @@ class PdfGenFormContainer extends React.Component {
   getProductFamilies = () => {
     fetch("http://localhost:4000/sows")
       .then(response => response.json())
-      .then(({ data }) => {
-        console.log(data);
-      })
+      .then(response => this.setState({ product_families: response.data }))
+      .catch(err => console.error(err));
+  };
+
+  addProductFamily = () => {
+    const { productFamilyNew } = this.state;
+    fetch(
+      `http://localhost:4000/sows/add?name=${productFamilyNew.productFamily}`
+    )
+      .then(this.getProductFamilies)
       .catch(err => console.error(err));
   };
 
   handleFormSubmit() {
-    console.log("handleFormSubmit Clicked");
+    // console.log("handleFormSubmit Clicked");
   }
   handleClearForm() {
-    console.log("handleClearForm Clicked");
+    // console.log("handleClearForm Clicked");
   }
 
   handleTextArea(e) {
-    console.log("handleTextArea Clicked");
+    // console.log("handleTextArea Clicked");
     let value = e.target.value;
     this.setState(
       prevState => ({
         customerInformation: value
-      }),
-      () => console.log(this.state.customerInformation)
+      }) /*,
+      () =>  console.log(this.state.customerInformation) */
     );
   }
 
@@ -119,9 +130,9 @@ class PdfGenFormContainer extends React.Component {
   );
 
   render() {
-    const { product_family } = this.state;
+    const { product_families, productFamilyNew } = this.state;
 
-    console.log(this.props);
+    // console.log(this.props);
 
     return (
       <div>
@@ -150,7 +161,22 @@ class PdfGenFormContainer extends React.Component {
             handleChange={this.handleSOWTypeCheckbox}
           />
         </form>
-        <div>{product_family.map(this.renderProdFamily)}</div>
+        <div>{product_families.map(this.renderProdFamily)}</div>
+        <div>
+          <input
+            value={productFamilyNew.productFamily}
+            placeholder={"Add new Product Family"}
+            onChange={e =>
+              this.setState({
+                productFamilyNew: {
+                  ...productFamilyNew,
+                  productFamily: e.target.value
+                }
+              })
+            }
+          />
+          <button onClick={this.addProduct}>Add Product </button>
+        </div>
       </div>
     );
   }

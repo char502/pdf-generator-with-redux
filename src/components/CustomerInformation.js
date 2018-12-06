@@ -1,7 +1,7 @@
 import React from "react";
 
 const CustomerInformation = props => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="form-group">
       <label className="form-label">{props.title}</label>

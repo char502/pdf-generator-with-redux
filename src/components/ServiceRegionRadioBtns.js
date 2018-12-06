@@ -1,7 +1,7 @@
 import React from "react";
 
 const ServiceRegionRadioBtns = props => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="form-group">
       <label htmlFor={props.name} className="form-label">
