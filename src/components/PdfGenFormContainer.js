@@ -1,10 +1,10 @@
 import React from "react";
 import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
 import CustomerInformation from "./CustomerInformation";
-import ProductSow from "./SOW_Type/ProductSow";
-import TeraDataSow from "./SOW_Type/TeraDataSOW";
-import CustomSow from "./SOW_Type/CustomSOW";
-// import SowType from "./SOWType";
+// import ProductSow from "./SOW_Type/ProductSow";
+// import TeraDataSow from "./SOW_Type/TeraDataSOW";
+// import CustomSow from "./SOW_Type/CustomSOW";
+import SowType from "./SOWType";
 
 class PdfGenFormContainer extends React.Component {
   constructor(props) {
@@ -15,15 +15,15 @@ class PdfGenFormContainer extends React.Component {
       serviceRegion: ["EMEA", "APAC", "NA & LATAM"],
       areaSelectedOption: [],
       customerInformation: "",
-      // sowType: [
-      //   "ProductSow",
-      //   "Teradata Customer SOW",
-      //   "Custom Professional Services SOW"
-      // ],
-      productSow: false,
-      teraData: false,
-      customSow: false,
-      sowSelectedOption: [],
+      sowType: [
+        "ProductSow",
+        "Teradata Customer SOW",
+        "Custom Professional Services SOW"
+      ],
+      // productSowChecked: false,
+      // teraData: { checked: false },
+      // customSow: { checked: false },
+      sowTypeSelectedOption: [],
       product_families: [],
       productFamilyNew: {
         product_family: ""
@@ -38,15 +38,16 @@ class PdfGenFormContainer extends React.Component {
     this.getProductFamilies = this.getProductFamilies.bind(this);
     this.addProductFamily = this.addProductFamily.bind(this);
     // this.checkForDups = this.checkForDups.bind(this);
-    this.handleCheckedChangeProduct = this.handleCheckedChangeProduct.bind(
-      this
-    );
-    this.handleCheckedChangeTeraData = this.handleCheckedChangeTeraData.bind(
-      this
-    );
-    this.handleCheckedChangeCustomSow = this.handleCheckedChangeCustomSow.bind(
-      this
-    );
+    // SOW Type Methods
+    // this.handleCheckedChangeProduct = this.handleCheckedChangeProduct.bind(
+    //   this
+    // );
+    // this.handleCheckedChangeTeraData = this.handleCheckedChangeTeraData.bind(
+    //   this
+    // );
+    // this.handleCheckedChangeCustomSow = this.handleCheckedChangeCustomSow.bind(
+    //   this
+    // );
   }
   // === SOW Type group ===
   componentDidMount = () => {
@@ -100,15 +101,57 @@ class PdfGenFormContainer extends React.Component {
     );
   }
 
-  handleCheckedChangeProduct(e) {
-    console.log("handleCheckedChangeOne Selected");
-  }
-  handleCheckedChangeTeraData(e) {
-    console.log("handleCheckedChangeTeraData Selected");
-  }
-  handleCheckedChangeCustomSow(e) {
-    console.log("handleCheckedChangeCustomSow Selected");
-  }
+  // handleCheckedChangeProduct(e) {
+  //   console.log(e);
+
+  //   this.setState({
+  //     productSowChecked: !this.state.productSowChecked
+  //   });
+
+  //   let checked = e.target.checked;
+
+  //   const target = e.target.name;
+
+  //   const name = target.name;
+  //   console.log(target);
+  //   const target = e.target;
+  //   const name = target.name;
+  //   const value = target.type === "checkbox" ? target.checked : target.value;
+
+  //   this.setState(prevState => ({
+  //     productSowChecked: !prevState.productSowChecked
+  //   }));
+  // }
+
+  // handleCheckedChangeProduct(e) {
+  //   console.log("checked", e);
+  //   // const target = e.target;
+  //   // const productSowChecked = target.name;
+  //   // const value = target.type === "checkbox" ? target.checked : target.value;
+  //   // console.log("handleCheckedChangeOne Selected");
+  //   // this.setState({
+  //   //   productSowChecked: value
+  //   // });
+
+  //   const name = e.target.name;
+  //   const checked = e.target.checked;
+  //   this.setState(prevState => {
+  //     return {
+  //       type: {
+  //         ...prevState.type,
+  //         [name]: !prevState.type[name]
+  //       }
+  //     };
+  //   });
+
+  //   // productSowChecked
+  // }
+  // handleCheckedChangeTeraData(e) {
+  //   console.log("handleCheckedChangeTeraData Selected");
+  // }
+  // handleCheckedChangeCustomSow(e) {
+  //   console.log("handleCheckedChangeCustomSow Selected");
+  // }
   // this.setState(
   //     prevState => ({
   //       newUser: {
@@ -118,7 +161,8 @@ class PdfGenFormContainer extends React.Component {
   //     }),
   //     () => console.log(this.state.newUser)
   //   );
-  //   handleRadioBtns(e) {
+
+  // handleRadioBtns(e) {
   //   const areaCheckSelection = e.target.value;
   //   let newCheckSelectionArray;
 
@@ -143,22 +187,22 @@ class PdfGenFormContainer extends React.Component {
     const sowTypeCheckSelection = e.target.value;
     let newSOWTypeSelectionArray;
 
-    if (this.state.sowSelectedOption.indexOf(sowTypeCheckSelection) > -1) {
+    if (this.state.sowTypeSelectedOption.indexOf(sowTypeCheckSelection) > -1) {
       //If a match between state array and // selected is found
       // assign to this variable:
       newSOWTypeSelectionArray =
         // all those that are not equal to what you picked
-        this.state.sowSelectedOption.filter(s => s !== sowTypeCheckSelection);
+        this.state.sowTypeSelectedOption.filter(
+          s => s !== sowTypeCheckSelection
+        );
     } else {
       newSOWTypeSelectionArray = [
-        ...this.state.sowSelectedOption,
+        ...this.state.sowTypeSelectedOption,
         sowTypeCheckSelection
       ];
       console.log(newSOWTypeSelectionArray);
       this.setState(prevState => ({
-        sowSelectedOption: {
-          sowSelectedOption: newSOWTypeSelectionArray
-        }
+        sowSelectedOption: newSOWTypeSelectionArray
       }));
     }
   }
@@ -191,12 +235,25 @@ class PdfGenFormContainer extends React.Component {
             placeholder={"Enter Customer Information Here"}
           />
           <div className="form-group">
-            <ProductSow
-              name={"Product Sow"}
-              checked={this.state.productSow}
+            {/* <ProductSow
+              type="checkbox"
+              checked={this.state.productSowChecked}
               onChange={this.handleCheckedChangeProduct}
-            />
-            <TeraDataSow
+            /> */}
+
+            {/* <input
+              type="checkbox"
+              checked={this.state.productSowChecked}
+              onChange={this.handleCheckedChangeProduct}
+            /> */}
+            {/* <ProductSow
+              name={"productSow"}
+              id={"productSow"}
+              checked={this.state.checked}
+              onChange={this.handleCheckedChangeProduct}
+              value={this.state.productSowChecked} */}
+
+            {/* <TeraDataSow
               name={"Teradata Customer SOW"}
               checked={this.state.teraData}
               onChange={this.handleCheckedChangeTeraData}
@@ -205,16 +262,16 @@ class PdfGenFormContainer extends React.Component {
               name={"Custom Professional Services SOW"}
               checked={this.state.customSow}
               onChange={this.handleCheckedChangeCustomSow}
-            />
+            /> */}
           </div>
-          {/* <SowType
+          <SowType
             title={"SOW Type"}
             name={"SOW Type"}
             subtitle={"What type of SOW do you want to generate?"}
             options={this.state.sowType}
-            selectedOption={this.state.sowSelectedOption}
+            selectedOption={this.state.sowTypeSelectedOption}
             handleChange={this.handleSOWTypeCheckbox}
-          /> */}
+          />
         </form>
         <div>{product_families.map(this.renderProdFamilies)}</div>
         <div>

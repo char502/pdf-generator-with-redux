@@ -49,10 +49,10 @@ textarea.form-control {
 }
 
 /* checkbox group */
-div.checkbox-group {
+/* div.checkbox-group {
   margin-left: 30px;
   margin-bottom: 20px;
-}
+} */
 
 .checked-form-group {
   margin-left: 30px;
@@ -60,7 +60,8 @@ div.checkbox-group {
 }
 
 .checked-form-group label {
-  padding: 10px;
+  padding: 3px;
+  padding-left: 10px;
 }
 
 /* .checked.form-group {

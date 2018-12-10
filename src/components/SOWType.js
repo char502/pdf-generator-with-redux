@@ -1,7 +1,7 @@
 import React from "react";
-import ProductSow from "./SOW_Type/ProductSow";
-import TeraData from "./SOW_Type/TeraDataSOW";
-import CustomSow from "./SOW_Type/CustomSOW";
+// import ProductSow from "./SOW_Type/ProductSow";
+// import TeraData from "./SOW_Type/TeraDataSOW";
+// import CustomSow from "./SOW_Type/CustomSOW";
 
 const SOWType = props => {
   // console.log(props);
@@ -12,7 +12,7 @@ const SOWType = props => {
         <h6>{props.subtitle}</h6>
       </label>
       <div className="checkbox-group vertical-align">
-        <ProductSow
+        {/* <ProductSow
           name={"Product Sow"}
           type="checkbox"
           checked={props.productSow}
@@ -29,8 +29,8 @@ const SOWType = props => {
           type="checkbox"
           checked={props.customSow}
           onChange={props.handleCheckedChangeCustomSow}
-        />
-        {/* {props.options.map(option => {
+        /> */}
+        {props.options.map(option => {
           return (
             <label key={option}>
               <input
@@ -39,13 +39,13 @@ const SOWType = props => {
                 name={props.name}
                 onChange={props.handleChange}
                 value={option}
-                checked={props.selectedOption.indexOf(option) > -1}
+                checked={props.sowTypeSelectedOption.indexOf(option) > -1}
                 type="checkbox"
               />
               {option}
             </label>
           );
-        })} */}
+        })}
       </div>
     </div>
   );
