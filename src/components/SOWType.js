@@ -12,35 +12,16 @@ const SOWType = props => {
         <h6>{props.subtitle}</h6>
       </label>
       <div className="checkbox-group vertical-align">
-        {/* <ProductSow
-          name={"Product Sow"}
-          type="checkbox"
-          checked={props.productSow}
-          onChange={props.handleCheckedChangeProduct}
-        />
-        <TeraDataSow
-          name={props.name}
-          type="checkbox"
-          checked={props.teraData}
-          onChange={props.handleCheckedChangeTeraData}
-        />
-        <CustomSow
-          name="Custom Professional Services SOW"
-          type="checkbox"
-          checked={props.customSow}
-          onChange={props.handleCheckedChangeCustomSow}
-        /> */}
         {props.options.map(option => {
           return (
             <label key={option}>
               <input
                 className="form-checkbox"
-                id={props.name}
-                name={props.name}
-                onChange={props.handleChange}
+                name={props.setName}
+                onChange={props.controlFunc}
                 value={option}
-                checked={props.sowTypeSelectedOption.indexOf(option) > -1}
-                type="checkbox"
+                checked={props.selectedOptions.indexOf(option) > -1}
+                type={props.type}
               />
               {option}
             </label>

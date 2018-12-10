@@ -2,6 +2,7 @@ import React from "react";
 
 const ServiceRegionRadioBtns = props => {
   // console.log(props);
+
   return (
     <div className="form-group">
       <label htmlFor={props.name} className="form-label">
@@ -13,12 +14,11 @@ const ServiceRegionRadioBtns = props => {
             <label key={option}>
               <input
                 className="form-radiobuttons"
-                id={props.name}
-                name={props.name}
-                onChange={props.handleChangeRadio}
+                name={props.setName}
+                onChange={props.controlFunc}
                 value={option}
-                checked={props.radioselectedoption.indexOf(option) > -1}
-                type={"radio"}
+                checked={props.selectedOptions.indexOf(option) > -1}
+                type={props.type}
               />
               {option}
             </label>
