@@ -176,7 +176,8 @@ class PdfGenFormContainer extends React.Component {
               value="Submit"
             />
             <button
-              className="btn btn-link float-left"
+              /* type="submit" */
+              className="btn btn-primary float-left"
               onClick={this.handleClearForm}
             >
               Clear Form

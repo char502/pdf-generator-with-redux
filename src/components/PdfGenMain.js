@@ -8,7 +8,7 @@ class PdfGenMain extends React.Component {
   render() {
     return (
       <div>
-        <p>This is PDF Gen Main</p>
+        {/* <p>This is PDF Gen Main</p> */}
         <PdfGenFormContainer />
       </div>
     );

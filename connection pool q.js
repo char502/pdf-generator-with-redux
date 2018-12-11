@@ -1,3 +1,19 @@
+
+ $ yarn install
+ $ git add yarn.lock
+ $ git commit -m "Updated Yarn lockfile"
+ $ git push heroku master
+
+
+USE sows;
+SELECT product_family AS Product_Family, product_config AS Product_config
+  FROM product_familes, product_configs
+  WHERE idprod_family = product_familes_idprod_family
+  ORDER BY product_config;
+ 
+ 
+server.js
+
 var express = require("express");
 var mysql   = require("mysql");
 var bodyParser  = require("body-parser");
