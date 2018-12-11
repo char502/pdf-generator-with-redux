@@ -44,7 +44,6 @@ div.radio-group label {
 }
 
 input#Service Region.form-radiobuttons {
-  /* padding: 50px; */
   margin-right: 10px;
 }
 
@@ -56,39 +55,34 @@ textarea.form-control {
 }
 
 /* checkbox group */
-/* div.checkbox-group {
-  margin-left: 30px;
-  margin-bottom: 20px;
-} */
-
 .checked-form-group {
   margin-left: 30px;
   margin-bottom: 10px;
+  padding-left: 30px;
 }
 
-.checked-form-group label {
-  padding: 3px;
+/* .checked-form-group label {
+  padding: 10px;
   padding-left: 10px;
-}
-
-/* .checked.form-group {
-  position: static;
-  align-self: center;
-  vertical-align: middle;
-  padding: 10px;
-} */
-
-/* checkbox-group input[type="checkbox"] {
-  position: static;
-  align-self: center;
-  vertical-align: middle;
-  padding: 10px;
 } */
 
 div.checkbox-group label {
+  margin-left: 30px;
   padding: 10px;
+  display: block;
+  margin-right: 0;
+
   /* border: 1px solid darkgray; */
 }
+
+input#SOW Type.form-checkbox {
+  /* padding: 50px; */
+  margin-right: 10px;
+}
+
+/* input.form-checkbox {
+  padding-left: 30px;
+} */
 
 /* Retrieve Previous page */
 /* CSS goes here */

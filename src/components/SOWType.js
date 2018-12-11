@@ -11,7 +11,7 @@ const SOWType = props => {
         {props.title}
         <h6>{props.subtitle}</h6>
       </label>
-      <div className="checkbox-group vertical-align">
+      <div className="checkbox-group">
         {props.options.map(option => {
           return (
             <label key={option}>

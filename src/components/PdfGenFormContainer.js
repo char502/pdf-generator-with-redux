@@ -83,37 +83,26 @@ class PdfGenFormContainer extends React.Component {
   };
   // === End of SOW Type group ===
 
-  handleFormSubmit() {
+  handleFormSubmit(e) {
+    e.preventDefault();
+
+    const formPayload = {
+      areaSelectedOption: this.state.areaSelectedOption,
+      customerInformation: this.state.customerInformation,
+      sowTypeSelectedOption: this.state.sowTypeSelectedOption
+    };
     // console.log("handleFormSubmit Clicked");
+    console.log(formPayload);
+    alert(formPayload);
+    this.handleClearForm(e);
   }
   handleClearForm(e) {
-    // console.log("handleClearForm Clicked");
     e.preventDefault();
     this.setState({
       areaSelectedOption: [],
       customerInformation: "",
       sowTypeSelectedOption: []
     });
-  }
-
-  handleTextArea(e) {
-    // console.log("handleTextArea Clicked");
-    let value = e.target.value;
-    this.setState(
-      prevState => ({
-        customerInformation: value
-      }) /*,
-      () =>  console.log(this.state.customerInformation) */
-    );
-  }
-
-  handleRadioBtns(e) {
-    this.setState(
-      {
-        areaSelectedOption: [e.target.value]
-      },
-      () => console.log("Region", this.state.areaSelectedOption)
-    );
   }
 
   handleSOWTypeCheckbox(e) {
@@ -129,6 +118,24 @@ class PdfGenFormContainer extends React.Component {
     }
     this.setState({ sowTypeSelectedOption: newSelectionArray }, () =>
       console.log("sow Type Selection", this.state.sowTypeSelectedOption)
+    );
+  }
+
+  handleTextArea(e) {
+    this.setState(
+      {
+        customerInformation: e.target.value
+      },
+      () => console.log("Customer Information:", this.state.customerInformation)
+    );
+  }
+
+  handleRadioBtns(e) {
+    this.setState(
+      {
+        areaSelectedOption: [e.target.value]
+      },
+      () => console.log("Region", this.state.areaSelectedOption)
     );
   }
 
@@ -155,8 +162,9 @@ class PdfGenFormContainer extends React.Component {
           <CustomerInformation
             title={"Customer Information"}
             rows={10}
-            value={this.state.customerInformation}
+            resize={false}
             name={"customerInformation"}
+            value={this.state.customerInformation}
             handleChange={this.handleTextArea}
             placeholder={"Enter Customer Information Here"}
           />
