@@ -6,18 +6,6 @@ import CustomerInformation from "./CustomerInformation";
 // import CustomSow from "./SOW_Type/CustomSOW";
 import SowType from "./SOWType";
 
-// const serviceRegionList = [
-//   {serviceRegion: 1, region: 'EMEA'},
-//   {serviceRegion: 2, region: 'APAC'},
-//   {serviceRegion: 3, region: 'LATAM'}
-// ];
-
-// const sowType = [
-//   {sowType: 1, region: 'ProductSow'},
-//   {sowType: 2, region: 'Teradata Customer SOW'},
-//   {sowType: 3, region: 'Custom Professional Services SOW'}
-// ];
-
 class PdfGenFormContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +21,7 @@ class PdfGenFormContainer extends React.Component {
         "Custom Professional Services SOW"
       ],
       sowTypeSelectedOption: [],
+      checkboxes: [],
       product_families: [],
       productFamilyNew: {
         product_family: ""
@@ -93,7 +82,7 @@ class PdfGenFormContainer extends React.Component {
     };
     // console.log("handleFormSubmit Clicked");
     console.log(formPayload);
-    alert(formPayload);
+    // alert(formPayload);
     this.handleClearForm(e);
   }
   handleClearForm(e) {
@@ -116,8 +105,12 @@ class PdfGenFormContainer extends React.Component {
     } else {
       newSelectionArray = [...this.state.sowTypeSelectedOption, newSelection];
     }
-    this.setState({ sowTypeSelectedOption: newSelectionArray }, () =>
-      console.log("sow Type Selection", this.state.sowTypeSelectedOption)
+    this.setState(
+      {
+        sowTypeSelectedOption: newSelectionArray
+      },
+      () =>
+        console.log("sow Type Selection: ", this.state.sowTypeSelectedOption)
     );
   }
 

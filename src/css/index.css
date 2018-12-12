@@ -31,8 +31,11 @@ label.form-label {
   font-size: 20px;
 }
 
+input.form-radiobuttons {
+  margin-right: 10px;
+}
+
 div.radio-group {
-  /* padding: 5px; */
   margin-left: 30px;
   margin-bottom: 10px;
 }
@@ -43,12 +46,11 @@ div.radio-group label {
   border-radius: 5px;
 }
 
-input#Service Region.form-radiobuttons {
+input.form-checkbox {
   margin-right: 10px;
 }
 
 textarea.form-control {
-  /* padding: 0; */
   width: 70%;
   margin-left: 30px;
   margin-bottom: 20px;
