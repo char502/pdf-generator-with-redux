@@ -7,5 +7,5 @@
   - React
   - React Router
   - Redux
-  - Firebase
+  - SQL
   - PDF Generator for react
