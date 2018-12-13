@@ -15,6 +15,11 @@ class PdfGenFormContainer extends React.Component {
       serviceRegion: ["EMEA", "APAC", "NA & LATAM"],
       areaSelectedOption: [],
       customerInformation: "",
+      // sowType: [
+      //   { name: "ProductSow", checked: false },
+      //   { name: "Teradata Customer SOW", checked: false },
+      //   { name: "Custom Professional Services SOW", checked: false }
+      // ],
       sowType: [
         "ProductSow",
         "Teradata Customer SOW",
@@ -22,6 +27,10 @@ class PdfGenFormContainer extends React.Component {
       ],
       sowTypeSelectedOption: [],
       checkboxes: [],
+      // componentList: {
+      //   ProductSow: "component for productSow",
+      //   "Teradata Customer SOW": "component for 2nd option", "Custom Professional Services SOW": "component for 3rd option"
+      // },
       product_families: [],
       productFamilyNew: {
         product_family: ""
@@ -97,7 +106,8 @@ class PdfGenFormContainer extends React.Component {
   handleSOWTypeCheckbox(e) {
     const newSelection = e.target.value;
     let newSelectionArray;
-
+    // console.log(newSelection);
+    console.log(e.target.checked);
     if (this.state.sowTypeSelectedOption.indexOf(newSelection) > -1) {
       newSelectionArray = this.state.sowTypeSelectedOption.filter(
         item => item !== newSelection
@@ -113,6 +123,28 @@ class PdfGenFormContainer extends React.Component {
         console.log("sow Type Selection: ", this.state.sowTypeSelectedOption)
     );
   }
+
+  // handleSOWTypeCheckbox(item) {
+  //   const isChecked = item.target.checked;
+  //   const value = item.target.value;
+
+  //   this.setState(prevState => ({
+  //     sowType: prevState.sowType.map(sType =>
+  //       sType.name === value ? { ...sType, checked: isChecked } : sType
+  //     )
+  //   }));
+
+  //   if (isChecked) {
+  //     this.setState(prevState => ({
+  //       sowTypeSelectedOption: [...prevState.sowTypeSelectedOption, value]
+  //     }));
+  //   } else {
+  //     const newSOW = this.state.sowTypeSelectedOption.filter(
+  //       sType => sType !== value
+  //     );
+  //     this.setState({ sowTypeSelectedOption: newSOW });
+  //   }
+  // }
 
   handleTextArea(e) {
     this.setState(
@@ -170,6 +202,17 @@ class PdfGenFormContainer extends React.Component {
             options={this.state.sowType}
             selectedOptions={this.state.sowTypeSelectedOption}
           />
+          {/* <SowType
+            title={"SOW Type"}
+            setName={"SOW Type"}
+            subtitle={"What type of SOW do you want to generate?"}
+            type={"checkbox"}
+            value={this.state.sowType[i].name}
+            controlFunc={this.handleSOWTypeCheckbox}
+            options={this.state.sowType}
+            selectedOptions={this.state.sowTypeSelectedOption}
+            checked={this.state.SowType.checked}
+          /> */}
           <div>
             <input
               type="submit"
