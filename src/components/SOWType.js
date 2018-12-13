@@ -1,14 +1,15 @@
 import React from "react";
-// import ProductSow from "./SOW_Type/ProductSow";
-// import TeraData from "./SOW_Type/TeraDataSOW";
-// import CustomSow from "./SOW_Type/CustomSOW";
+import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
+import TeradataExtOptions from "./ExtendedOptions/TeradataExtOptions";
+import CustomProfExtOptions from "./ExtendedOptions/CustomProfExtOptions";
 
 class SOWType extends React.Component {
+  componentList = {
+    ProductSow: <ProdSOWExtOptions />,
+    "Teradata Customer SOW": <TeradataExtOptions />,
+    "Custom Professional Services SOW": <CustomProfExtOptions />
+  };
   render() {
-    // componentList = {
-    //   ProductSow: "component for productSow",
-    //   "Teradata Customer SOW": "component for 2nd option", "Custom Professional Services SOW": "component for 3rd option"
-    // };
     // console.log(this.props);
     return (
       <div className="form-group">
@@ -29,25 +30,14 @@ class SOWType extends React.Component {
                   type={this.props.type}
                 />
                 {option}
+                {this.props.selectedOptions.indexOf(option) > -1 ? (
+                  <h5>{this.componentList[option]}</h5>
+                ) : (
+                  " "
+                )}
               </label>
             );
           })}
-          {/* {this.props.options.map((option, index) => {
-            return (
-              <label key={index}>
-                <input
-                  className="form-checkbox"
-                  name={this.props.setName}
-                  onChange={this.props.controlFunc}
-                  value={index.option}
-                  checked={this.props.selectedOptions.indexOf(option) > -1}
-                  checked={this.props.checked[index]}
-                  type={this.props.type}
-                />
-                {index.option}
-              </label>
-            );
-          })} */}
         </div>
       </div>
     );

@@ -105,9 +105,11 @@ class PdfGenFormContainer extends React.Component {
 
   handleSOWTypeCheckbox(e) {
     const newSelection = e.target.value;
+    // console.log(e);
+    // console.log(newSelection);
     let newSelectionArray;
     // console.log(newSelection);
-    console.log(e.target.checked);
+    // console.log(e.target.checked);
     if (this.state.sowTypeSelectedOption.indexOf(newSelection) > -1) {
       newSelectionArray = this.state.sowTypeSelectedOption.filter(
         item => item !== newSelection
