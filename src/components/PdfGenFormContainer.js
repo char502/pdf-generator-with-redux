@@ -5,6 +5,7 @@ import CustomerInformation from "./CustomerInformation";
 // import TeraDataSow from "./SOW_Type/TeraDataSOW";
 // import CustomSow from "./SOW_Type/CustomSOW";
 import SowType from "./SOWType";
+import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
 
 class PdfGenFormContainer extends React.Component {
   constructor(props) {
@@ -15,22 +16,17 @@ class PdfGenFormContainer extends React.Component {
       serviceRegion: ["EMEA", "APAC", "NA & LATAM"],
       areaSelectedOption: [],
       customerInformation: "",
-      // sowType: [
-      //   { name: "ProductSow", checked: false },
-      //   { name: "Teradata Customer SOW", checked: false },
-      //   { name: "Custom Professional Services SOW", checked: false }
-      // ],
       sowType: [
         "ProductSow",
         "Teradata Customer SOW",
         "Custom Professional Services SOW"
       ],
       sowTypeSelectedOption: [],
-      checkboxes: [],
       // componentList: {
       //   ProductSow: "component for productSow",
       //   "Teradata Customer SOW": "component for 2nd option", "Custom Professional Services SOW": "component for 3rd option"
       // },
+      prodSowTestInformation: "",
       product_families: [],
       productFamilyNew: {
         product_family: ""
@@ -46,6 +42,7 @@ class PdfGenFormContainer extends React.Component {
     // SOW Type Methods
     this.handleRadioBtns = this.handleRadioBtns.bind(this);
     this.handleSOWTypeCheckbox = this.handleSOWTypeCheckbox.bind(this);
+    this.handleSOWExtOptions = this.handleSOWExtOptions.bind.this;
   }
   // === SOW Type group ===
   componentDidMount = () => {
@@ -87,7 +84,8 @@ class PdfGenFormContainer extends React.Component {
     const formPayload = {
       areaSelectedOption: this.state.areaSelectedOption,
       customerInformation: this.state.customerInformation,
-      sowTypeSelectedOption: this.state.sowTypeSelectedOption
+      sowTypeSelectedOption: this.state.sowTypeSelectedOption,
+      prodSowTestInformation: this.state.prodSowTestInformation
     };
     // console.log("handleFormSubmit Clicked");
     console.log(formPayload);
@@ -99,30 +97,17 @@ class PdfGenFormContainer extends React.Component {
     this.setState({
       areaSelectedOption: [],
       customerInformation: "",
-      sowTypeSelectedOption: []
+      sowTypeSelectedOption: [],
+      prodSowTestInformation: ""
     });
   }
 
-  handleSOWTypeCheckbox(e) {
-    const newSelection = e.target.value;
-    // console.log(e);
-    // console.log(newSelection);
-    let newSelectionArray;
-    // console.log(newSelection);
-    // console.log(e.target.checked);
-    if (this.state.sowTypeSelectedOption.indexOf(newSelection) > -1) {
-      newSelectionArray = this.state.sowTypeSelectedOption.filter(
-        item => item !== newSelection
-      );
-    } else {
-      newSelectionArray = [...this.state.sowTypeSelectedOption, newSelection];
-    }
+  handleRadioBtns(e) {
     this.setState(
       {
-        sowTypeSelectedOption: newSelectionArray
+        areaSelectedOption: [e.target.value]
       },
-      () =>
-        console.log("sow Type Selection: ", this.state.sowTypeSelectedOption)
+      () => console.log("Region", this.state.areaSelectedOption)
     );
   }
 
@@ -157,12 +142,35 @@ class PdfGenFormContainer extends React.Component {
     );
   }
 
-  handleRadioBtns(e) {
+  handleSOWTypeCheckbox(e) {
+    const newSelection = e.target.value;
+    // console.log(e);
+    // console.log(newSelection);
+    let newSelectionArray;
+    // console.log(newSelection);
+    // console.log(e.target.checked);
+    if (this.state.sowTypeSelectedOption.indexOf(newSelection) > -1) {
+      newSelectionArray = this.state.sowTypeSelectedOption.filter(
+        item => item !== newSelection
+      );
+    } else {
+      newSelectionArray = [...this.state.sowTypeSelectedOption, newSelection];
+    }
     this.setState(
       {
-        areaSelectedOption: [e.target.value]
+        sowTypeSelectedOption: newSelectionArray
       },
-      () => console.log("Region", this.state.areaSelectedOption)
+      () =>
+        console.log("sow Type Selection: ", this.state.sowTypeSelectedOption)
+    );
+  }
+
+  handleSOWExtOptions(e) {
+    this.setState(
+      {
+        prodSowTestInformation: e.target.value
+      },
+      () => console.log("prodSow Info:", this.state.prodSowTestInformation)
     );
   }
 
@@ -204,6 +212,15 @@ class PdfGenFormContainer extends React.Component {
             options={this.state.sowType}
             selectedOptions={this.state.sowTypeSelectedOption}
           />
+          {/* <ProdSOWExtOptions
+            title={"ProdSOWExtOptions"}
+            rows={10}
+            resize={false}
+            name={"ProdSOWExtOptions"}
+            value={this.state.prodSowTestInformation}
+            handleChange={this.handleSOWExtOptions}
+            placeholder={"ProdSOWExtOptions Here"}
+          /> */}
           {/* <SowType
             title={"SOW Type"}
             setName={"SOW Type"}

@@ -5,7 +5,7 @@ import CustomProfExtOptions from "./ExtendedOptions/CustomProfExtOptions";
 
 class SOWType extends React.Component {
   componentList = {
-    ProductSow: <ProdSOWExtOptions />,
+    ProductSow: <ProdSOWExtOptions type={this.props} />,
     "Teradata Customer SOW": <TeradataExtOptions />,
     "Custom Professional Services SOW": <CustomProfExtOptions />
   };
