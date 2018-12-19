@@ -11,7 +11,7 @@ export const setNewEditableForm = (form) => ({
   form
 });
 
-export const editFormPEnding = () => ({
+export const editFormPending = () => ({
   type: constants.EDIT_FORM_PENDING
 });
 

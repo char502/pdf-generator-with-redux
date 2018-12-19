@@ -1,7 +1,7 @@
 import { getFormEdit, getFormView } from "./selectors";
 import {
   editFormSuccess,
-  EditFormPending,
+  editFormPending,
   setNewEditableForm
 } from "./actions/formActions";
 

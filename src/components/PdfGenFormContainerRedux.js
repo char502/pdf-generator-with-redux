@@ -1,11 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  getFormView,
-  getFormEdit,
-  getHasChanged,
-  getHasChanged
-} from "../redux/selectors";
+import { getFormView, getFormEdit, getHasChanged } from "../redux/selectors";
 import { setupForm, saveForm } from "../redux/thunk";
 import { addChange } from "../redux/actions/formActions";
 import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
@@ -17,7 +12,7 @@ import SowType from "./SOWType";
 // import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
 // import PropTypes from "prop-types";
 
-class PdfGenFormContainer extends React.Component {
+class PdfGenFormContainerRedux extends React.Component {
   componentDidMount() {
     this.props.setUpEditableForm();
   }
@@ -32,6 +27,8 @@ class PdfGenFormContainer extends React.Component {
       saveChanges
     } = this.props;
 
+    console.log(this.props);
+
     if (!formEdit || !formView) {
       return <span>LOADING</span>;
     }
@@ -39,14 +36,14 @@ class PdfGenFormContainer extends React.Component {
     return (
       <div>
         <form className="formContainer" onSubmit={this.handleFormSubmit}>
-          <ServiceRegionRadioBtns
+          {/* <ServiceRegionRadioBtns
             title={"Service Region"}
             setName={"Service Region"}
             controlFunc={this.handleRadioBtns}
             type={"radio"}
             options={this.state.serviceRegion}
             selectedOptions={this.state.areaSelectedOption}
-          />
+          /> */}
           {/* <CustomerInformation
             title={"Customer Information"}
             rows={10}
@@ -58,14 +55,16 @@ class PdfGenFormContainer extends React.Component {
           /> */}
           <CustomerInformation
             title={"Customer Information"}
-            rows={10}
-            resize={false}
-            name={"customerInformation"}
-            value={formEdit.field}
-            handleChange={(newValue) => addChange("field", newValue)}
-            placeholder={"Enter Customer Information Here"}
+            /* rows={10} */
+            /* resize={false} */
+            /* name={"customerInformation"} */
+            value={formEdit.customerInformation}
+            handleChange={(newValue) =>
+              addChange("customerInformation", newValue)
+            }
+            /* placeholder={"Please Enter Customer Information Here"} */
           />
-          <SowType
+          {/* <SowType
             title={"SOW Type"}
             setName={"SOW Type"}
             subtitle={"What type of SOW do you want to generate?"}
@@ -73,12 +72,13 @@ class PdfGenFormContainer extends React.Component {
             controlFunc={this.handleSOWTypeCheckbox}
             options={this.state.sowType}
             selectedOptions={this.state.sowTypeSelectedOption}
-          />
+          /> */}
           <div>
             <input
               type="submit"
               className="btn btn-primary float-right"
               value="Submit"
+              /* onSaveAction={saveChanges} */
             />
             <button
               className="btn btn-primary float-left"
@@ -113,7 +113,7 @@ class PdfGenFormContainer extends React.Component {
   }
 }
 
-PdfGenFormContainer.defaultProps = {
+PdfGenFormContainerRedux.defaultProps = {
   formView: null,
   formEdit: null,
   hasChanged: true
@@ -130,10 +130,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addChange(fieldName, fieldValue)),
   discardChanges: () => dispatch(setupForm()),
   saveChanges: () => dispatch(saveForm),
-  setupEditableForm: () => dispatch(setupForm())
+  setUpEditableForm: () => dispatch(setupForm())
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PdfGenFormContainer);
+)(PdfGenFormContainerRedux);

@@ -1,5 +1,5 @@
 import React from "react";
-import PdfGenFormContainer from "./PdfGenFormContainer";
+import PdfGenFormContainerRedux from "./PdfGenFormContainerRedux";
 // import ServiceRegion from "./ServiceRegion";
 // import CustomerInformation from "./CustomerInformation";
 // import SowType from "./SOWType";
@@ -9,7 +9,7 @@ class PdfGenMain extends React.Component {
     return (
       <div>
         {/* <p>This is PDF Gen Main</p> */}
-        <PdfGenFormContainer />
+        <PdfGenFormContainerRedux />
       </div>
     );
   }
