@@ -44,6 +44,14 @@ class PdfGenFormContainerRedux extends React.Component {
             options={this.state.serviceRegion}
             selectedOptions={this.state.areaSelectedOption}
           /> */}
+          <ServiceRegionRadioBtns
+            title={"Service Region"}
+            /* setName={"Service Region"} */
+            controlFunc={this.handleRadioBtns}
+            type={"radio"}
+            options={this.state.serviceRegion}
+            selectedOptions={this.state.areaSelectedOption}
+          />
           {/* <CustomerInformation
             title={"Customer Information"}
             rows={10}
@@ -54,16 +62,15 @@ class PdfGenFormContainerRedux extends React.Component {
             placeholder={"Enter Customer Information Here"}
           /> */}
           <CustomerInformation
-            title={"Customer Information"}
-            /* rows={10} */
+            title={"Customer Information"} /* rows={10} */
             /* resize={false} */
             /* name={"customerInformation"} */
             value={formEdit.customerInformation}
             handleChange={(newValue) =>
               addChange("customerInformation", newValue)
             }
-            /* placeholder={"Please Enter Customer Information Here"} */
           />
+          /* placeholder={"Please Enter Customer Information Here"} */
           {/* <SowType
             title={"SOW Type"}
             setName={"SOW Type"}
@@ -78,8 +85,8 @@ class PdfGenFormContainerRedux extends React.Component {
               type="submit"
               className="btn btn-primary float-right"
               value="Submit"
-              /* onSaveAction={saveChanges} */
             />
+            /* onSaveAction={saveChanges} */
             <button
               className="btn btn-primary float-left"
               onClick={this.handleClearForm}

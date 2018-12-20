@@ -19,12 +19,12 @@ const CustomerInformation = ({ handleChange, title, value, name }) => {
   );
 };
 
-CustomerInformation.defaultProps = {
-  handleChange: (event) => console.info(`New value : ${event.target.value}`),
-  // title: "Customer Information",
-  value: null
-  // placeholder: "Please Enter Customer Information"
-};
+// CustomerInformation.defaultProps = {
+//   handleChange: (event) => console.info(`New value : ${event.target.value}`),
+//   title: "Customer Information",
+//   value: null,
+//   placeholder: "Please Enter Customer Information"
+// };
 
 // CustomerInformation.propTypes = {
 //   rows: React.PropTypes.number.isRequired,
