@@ -1,35 +1,41 @@
-import { applyMiddleware, createStore, combineReducers } from "redux";
-import thunkMiddleware from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
-import pdfGenReducer from "../redux/reducers/pdfGenReducer";
-import simpleTestReducer from "../redux/reducers/simpleTestReducer";
-import formReducer from "../redux/reducers/formReducer";
+import { applyMiddleware, createStore, compose } from "redux";
+import createReducer from "../redux/reducers/createReducer";
+// import pdfGenReducer from "../components/old/_pdfGenReducer";
+// import simpleTestReducer from "../components/old/simpleTestReducer";
+// import thunkMiddleware from "redux-thunk";
+// import { composeWithDevTools } from "redux-devtools-extension";
+
+// import formReducer from "../redux/reducers/_formReducer";
 // import thunk from "redux-thunk";
 
-function configureStore(initialState) {
-  const reducers = combineReducers({
-    form: formReducer,
-    pdfGen: pdfGenReducer,
-    testReducer: simpleTestReducer
-  });
+const composeEnhancers =
+  typeof window === "object" &&
+  (window._REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : compose);
 
-  return createStore(
-    reducers,
-    initialState,
-    composeWithDevTools(applyMiddleware(...[thunkMiddleware]))
+export function configureStore() {
+  const middlewares = [];
+  const store = createStore(
+    createReducer(),
+    {},
+    composeEnhancers(applyMiddleware(...middlewares))
   );
+  return store;
 }
 
 export default configureStore;
 
-// export default () => {
-//   const store = createStore(
-//     combineReducers({
-//       pdfGen: pdfGenReducer,
-//       testReducer: simpleTestReducer,
-//       form: formReducer
-//     }),
-//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// function configureStore(initialState) {
+//   const reducers = combineReducers({
+//     form: formReducer,
+//     pdfGen: pdfGenReducer,
+//     testReducer: simpleTestReducer
+//   });
+
+//   return createStore(
+//     reducers,
+//     initialState,
+//     composeWithDevTools(applyMiddleware(...[thunkMiddleware]))
 //   );
-//   return store;
-// };
+// }

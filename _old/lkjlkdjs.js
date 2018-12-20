@@ -1,4 +1,4 @@
-import * as constants from "../constants";
+import * as constants from "../../redux/constants";
 
 export const addChange = (fieldName, fieldValue) => ({
   type: constants.ADD_CHANGE,

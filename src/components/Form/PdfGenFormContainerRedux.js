@@ -1,11 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
-import { getFormView, getFormEdit, getHasChanged } from "../redux/selectors";
-import { setupForm, saveForm } from "../redux/thunk";
-import { addChange } from "../redux/actions/formActions";
-import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
+import { reduxForm } from "redux-form";
+// import PdfGenFormComponentRedux from "./PdfGenFormComponentRedux";
+// import { connect } from "react-redux";
+// import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
 import CustomerInformation from "./CustomerInformation";
-import SowType from "./SOWType";
+// import SowType from "./SOWType";
 // import ProductSow from "./SOW_Type/ProductSow";
 // import TeraDataSow from "./SOW_Type/TeraDataSOW";
 // import CustomSow from "./SOW_Type/CustomSOW";
@@ -13,25 +12,26 @@ import SowType from "./SOWType";
 // import PropTypes from "prop-types";
 
 class PdfGenFormContainerRedux extends React.Component {
-  componentDidMount() {
-    this.props.setUpEditableForm();
-  }
+  // componentDidMount() {
+  //   this.props.setUpEditableForm();
+  // }
 
   render() {
-    const {
-      addChange,
-      discardChanges,
-      formView,
-      formEdit,
-      hasChanged,
-      saveChanges
-    } = this.props;
+    console.log(reduxForm);
+    // const {
+    //   addChange,
+    //   discardChanges,
+    //   formView,
+    //   formEdit,
+    //   hasChanged,
+    //   saveChanges
+    // } = this.props;
 
-    console.log(this.props);
+    // console.log(this.props);
 
-    if (!formEdit || !formView) {
-      return <span>LOADING</span>;
-    }
+    // if (!formEdit || !formView) {
+    //   return <span>LOADING</span>;
+    // }
 
     return (
       <div>
@@ -44,14 +44,14 @@ class PdfGenFormContainerRedux extends React.Component {
             options={this.state.serviceRegion}
             selectedOptions={this.state.areaSelectedOption}
           /> */}
-          <ServiceRegionRadioBtns
+          {/* <ServiceRegionRadioBtns
             title={"Service Region"}
-            /* setName={"Service Region"} */
+            setName={"Service Region"}
             controlFunc={this.handleRadioBtns}
             type={"radio"}
             options={this.state.serviceRegion}
             selectedOptions={this.state.areaSelectedOption}
-          />
+          /> */}
           {/* <CustomerInformation
             title={"Customer Information"}
             rows={10}
@@ -62,15 +62,16 @@ class PdfGenFormContainerRedux extends React.Component {
             placeholder={"Enter Customer Information Here"}
           /> */}
           <CustomerInformation
-            title={"Customer Information"} /* rows={10} */
-            /* resize={false} */
+            title={"Customer Information"}
+            rows={10}
+            resize={false}
             /* name={"customerInformation"} */
-            value={formEdit.customerInformation}
-            handleChange={(newValue) =>
-              addChange("customerInformation", newValue)
-            }
+            /* value={formEdit.customerInformation} */
+            /* handleChange={(newValue) =>
+            addChange("customerInformation", newValue)
+          } */
           />
-          /* placeholder={"Please Enter Customer Information Here"} */
+          {/* placeholder={"Please Enter Customer Information Here"} */}
           {/* <SowType
             title={"SOW Type"}
             setName={"SOW Type"}
@@ -86,7 +87,7 @@ class PdfGenFormContainerRedux extends React.Component {
               className="btn btn-primary float-right"
               value="Submit"
             />
-            /* onSaveAction={saveChanges} */
+            {/* onSaveAction={saveChanges} */}
             <button
               className="btn btn-primary float-left"
               onClick={this.handleClearForm}
@@ -120,27 +121,8 @@ class PdfGenFormContainerRedux extends React.Component {
   }
 }
 
-PdfGenFormContainerRedux.defaultProps = {
-  formView: null,
-  formEdit: null,
-  hasChanged: true
+const formConfiguration = {
+  form: "my-very-own-form"
 };
 
-const mapStateToProps = (state) => ({
-  formView: getFormView(state),
-  formEdit: getFormEdit(state),
-  hasChanged: getHasChanged(state)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  addChange: (fieldName, fieldValue) =>
-    dispatch(addChange(fieldName, fieldValue)),
-  discardChanges: () => dispatch(setupForm()),
-  saveChanges: () => dispatch(saveForm),
-  setUpEditableForm: () => dispatch(setupForm())
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PdfGenFormContainerRedux);
+export default reduxForm(formConfiguration)(PdfGenFormContainerRedux);

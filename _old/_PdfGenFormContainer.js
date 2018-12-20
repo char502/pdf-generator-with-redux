@@ -1,10 +1,10 @@
 import React from "react";
-import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
-import CustomerInformation from "./CustomerInformation";
+import ServiceRegionRadioBtns from "../Form/ServiceRegionRadioBtns";
+import CustomerInformation from "../Form/CustomerInformation";
 // import ProductSow from "./SOW_Type/ProductSow";
 // import TeraDataSow from "./SOW_Type/TeraDataSOW";
 // import CustomSow from "./SOW_Type/CustomSOW";
-import SowType from "./SOWType";
+import SowType from "../Form/SOWType";
 // import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
 
 class PdfGenFormContainer extends React.Component {

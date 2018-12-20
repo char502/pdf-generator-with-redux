@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import * as constants from "../constants";
+import * as constants from "../../redux/constants";
 
 const initialState = {
   view: {

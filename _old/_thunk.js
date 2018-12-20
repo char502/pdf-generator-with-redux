@@ -3,7 +3,7 @@ import {
   editFormSuccess,
   editFormPending,
   setNewEditableForm
-} from "./actions/formActions";
+} from "../components/old/_formActions";
 
 export function setupForm() {
   return function _resetForm(dispatch, getState) {
