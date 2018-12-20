@@ -1,9 +1,10 @@
 import React from "react";
-import { reduxForm } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 // import PdfGenFormComponentRedux from "./PdfGenFormComponentRedux";
 // import { connect } from "react-redux";
 // import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
-import CustomerInformation from "./CustomerInformation";
+// import CustomerInformation from "./CustomerInformation";
+// import Testcomp from "./Testcomp";
 // import SowType from "./SOWType";
 // import ProductSow from "./SOW_Type/ProductSow";
 // import TeraDataSow from "./SOW_Type/TeraDataSOW";
@@ -11,115 +12,49 @@ import CustomerInformation from "./CustomerInformation";
 // import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
 // import PropTypes from "prop-types";
 
-class PdfGenFormContainerRedux extends React.Component {
-  // componentDidMount() {
-  //   this.props.setUpEditableForm();
-  // }
-
-  render() {
-    console.log(reduxForm);
-    // const {
-    //   addChange,
-    //   discardChanges,
-    //   formView,
-    //   formEdit,
-    //   hasChanged,
-    //   saveChanges
-    // } = this.props;
-
-    // console.log(this.props);
-
-    // if (!formEdit || !formView) {
-    //   return <span>LOADING</span>;
-    // }
-
-    return (
-      <div>
-        <form className="formContainer" onSubmit={this.handleFormSubmit}>
-          {/* <ServiceRegionRadioBtns
-            title={"Service Region"}
-            setName={"Service Region"}
-            controlFunc={this.handleRadioBtns}
-            type={"radio"}
-            options={this.state.serviceRegion}
-            selectedOptions={this.state.areaSelectedOption}
-          /> */}
-          {/* <ServiceRegionRadioBtns
-            title={"Service Region"}
-            setName={"Service Region"}
-            controlFunc={this.handleRadioBtns}
-            type={"radio"}
-            options={this.state.serviceRegion}
-            selectedOptions={this.state.areaSelectedOption}
-          /> */}
-          {/* <CustomerInformation
-            title={"Customer Information"}
-            rows={10}
-            resize={false}
-            name={"customerInformation"}
-            value={this.state.customerInformation}
-            handleChange={this.handleTextArea}
-            placeholder={"Enter Customer Information Here"}
-          /> */}
-          <CustomerInformation
-            title={"Customer Information"}
-            rows={10}
-            resize={false}
-            /* name={"customerInformation"} */
-            /* value={formEdit.customerInformation} */
-            /* handleChange={(newValue) =>
-            addChange("customerInformation", newValue)
-          } */
-          />
-          {/* placeholder={"Please Enter Customer Information Here"} */}
-          {/* <SowType
-            title={"SOW Type"}
-            setName={"SOW Type"}
-            subtitle={"What type of SOW do you want to generate?"}
-            type={"checkbox"}
-            controlFunc={this.handleSOWTypeCheckbox}
-            options={this.state.sowType}
-            selectedOptions={this.state.sowTypeSelectedOption}
-          /> */}
+export const PdfGenFormContainerRedux = (props) => {
+  const { handleSubmit, onSubmit } = props;
+  console.log(props);
+  const submitForm = (formValues) => {
+    console.log("submitting Form: ", formValues);
+  };
+  return (
+    <div>
+      <form className="formContainer" onSubmit={handleSubmit(submitForm)}>
+        <div className="form-group">
           <div>
-            <input
-              type="submit"
-              className="btn btn-primary float-right"
-              value="Submit"
-            />
-            {/* onSaveAction={saveChanges} */}
-            <button
-              className="btn btn-primary float-left"
-              onClick={this.handleClearForm}
-            >
-              Clear Form
-            </button>
+            <label className="form-label">Service Region</label>
+            <div>
+              <Field
+                className="form-radiobuttons"
+                name="Service Region"
+                component="input"
+                type="radio"
+              />
+            </div>
           </div>
-        </form>
-        <br />
-        <br />
-        {/* <div>{product_families.map(this.renderProdFamilies)}</div>
-        <div>
-          <input
-            value={productFamilyNew.productFamily}
-            placeholder={"Add New Product Family"}
-            onChange={(e) =>
-              this.setState({
-                productFamilyNew: {
-                  ...productFamilyNew,
-                  product_family: e.target.value
-                }
-              })
-            }
-          />
-          <button onClick={this.addProductFamily}>Add Product Family</button>
-          <br />
-          <br />
-        </div> */}
-      </div>
-    );
-  }
-}
+        </div>
+
+        <div className="form-group">
+          <div>
+            <label className="form-label">Customer Information</label>
+            <div>
+              <Field
+                className="form-control"
+                name="customerInformation"
+                component="textarea"
+                rows={10}
+                style={"resize" ? null : { resize: "none" }}
+                placeholder={"Enter Customer Information Here"}
+              />
+            </div>
+          </div>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
 
 const formConfiguration = {
   form: "my-very-own-form"
