@@ -22,10 +22,11 @@ class PdfGenFormContainer extends React.Component {
         "Custom Professional Services SOW"
       ],
       sowTypeSelectedOption: [],
-      // componentList: {
-      //   ProductSow: "component for productSow",
-      //   "Teradata Customer SOW": "component for 2nd option", "Custom Professional Services SOW": "component for 3rd option"
-      // },
+      componentList: {
+        ProductSow: "component for productSow",
+        "Teradata Customer SOW": "component for 2nd option",
+        "Custom Professional Services SOW": "component for 3rd option"
+      },
       prodSowTestInformation: "",
       product_families: [],
       productFamilyNew: {

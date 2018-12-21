@@ -1,50 +1,42 @@
 import React from "react";
+import { Field } from "redux-form";
+import PropTypes from "prop-types";
 
-const ServiceRegionRadioBtns = (props) => {
-  // console.log(props);
-
-  return (
-    <div className="form-group">
-      <label htmlFor="Service Region" className="form-label">
-        Service Region
-      </label>
-      <div className="radio-group">
-        {props.options.map((option) => {
-          return (
-            <label key={option}>
+const ServiceRegionRadioBtns = ({ name, options }) => (
+  <div className="form-label">
+    <div className="radio-group">
+      <Field
+        component={({ input, options }) =>
+          options.map((option) => (
+            <label key={option.id}>
               <input
                 className="form-radiobuttons"
-                name={props.setName}
-                onChange={props.controlFunc}
-                value={option}
-                checked={props.selectedOptions.indexOf(option) > -1}
-                type={props.type}
+                id={option.id}
+                type="radio"
+                {...input}
+                value={option.value}
+                checked={option.value === input.value}
               />
-              {option}
+              {option.label}
             </label>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-const CustomerInformation = ({ handleChange, title, value, name }) => {
-  // console.log(props);
-  return (
-    <div className="form-group">
-      <label className="form-label">Customer Information</label>
-      <textarea
-        className="form-control"
-        rows={10}
-        /* style={"resize" ? null : { resize: "none" }} */
-        /* name={name} */
-        value={value}
-        onChange={(event) => handleChange(event.target.value)}
-        placeholder={"Please Enter Customer Information Here"}
+          ))
+        }
+        name={name}
+        options={options}
       />
     </div>
-  );
-};
+  </div>
+);
 
 export default ServiceRegionRadioBtns;
+
+ServiceRegionRadioBtns.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired
+    })
+  ),
+  name: PropTypes.string.isRequired
+};

@@ -20,7 +20,7 @@ const routerAndStore = (
   </Provider>
 );
 
-console.log(store.getState());
+// console.log(store.getState());
 // ReactDOM.render(<Routes />, document.getElementById("root"));
 
 ReactDOM.render(routerAndStore, document.getElementById("root"));
