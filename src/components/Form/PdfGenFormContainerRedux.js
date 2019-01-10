@@ -16,7 +16,8 @@ export const PdfGenFormContainerRedux = ({
   handleSubmit,
   error,
   touched,
-  dirty
+  dirty,
+  values
 }) => {
   // const { meta: { error, touched, dirty } } = this.props;
 
