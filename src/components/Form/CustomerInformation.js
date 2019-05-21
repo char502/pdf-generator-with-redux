@@ -1,23 +1,22 @@
 import React from "react";
-import { Field } from "redux-form";
+// import { Field } from "redux-form";
 // import PropTypes from "prop-types";
 
-const CustomerInformation = ({ handleSubmit, onSubmit }) => {
-  // console.log(props);
+const CustomerInformation = ({ placeholder, input }) => {
+  console.log(input);
   return (
-    <div className="form-group">
-      <label className="form-label">Customer Information</label>
-      <Field
-        className="form-control"
-        rows={10}
-        name="firstName"
-        component="input"
-        /* style={"resize" ? null : { resize: "none" }} */
-        /* name={name} */
-        /* value={value} */
-        /* onChange={(event) => handleChange(event.target.value)} */
-        /* placeholder={"Please Enter Customer Information Here"} */
-      />
+    <div>
+      <div className="form-label" />
+      <div>
+        <textarea
+          className="form-control"
+          {...input}
+          type="textarea"
+          rows={10}
+          placeholder={placeholder}
+          style={"resize" ? null : { resize: "none" }}
+        />
+      </div>
     </div>
   );
 };

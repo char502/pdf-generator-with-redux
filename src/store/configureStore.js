@@ -10,7 +10,7 @@ import createReducer from "../redux/reducers/createReducer";
 
 const composeEnhancers =
   typeof window === "object" &&
-  (window._REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : compose);
 

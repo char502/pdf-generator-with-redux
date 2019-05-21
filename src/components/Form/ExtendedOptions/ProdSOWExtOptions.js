@@ -1,21 +1,36 @@
 import React from "react";
 
-const ProdSOWExtOptions = props => {
+const ProdSOWExtOptions = (props) => {
   return (
-    <div className="form-group">
-      {/* <p>This is the ProdSOWExtOptions Component</p> */}
-      <label className="form-label">{props.title}</label>
-      <textarea
-        className="form-control"
-        rows={props.rows}
-        style={props.resize ? null : { resize: "none" }}
-        name={props.name}
-        value={props.value}
-        onChange={props.handleChange}
-        placeholder={props.placeholder}
-      />
+    <div>
+      <div className="form-label" />
+      <div>
+        <input
+          className="form-control"
+          {...props.input}
+          type="checkbox"
+          checked={props.input.value}
+          label={props.label}
+        />
+      </div>
     </div>
   );
 };
 
 export default ProdSOWExtOptions;
+
+// {
+/* <div>
+  <div className="form-label" />
+  <div>
+    <textarea
+      className="form-control"
+      {...input}
+      type="textarea"
+      rows={10}
+      placeholder={placeholder}
+      style={"resize" ? null : { resize: "none" }}
+    />
+  </div>
+</div> */
+// }

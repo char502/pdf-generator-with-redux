@@ -1,32 +1,30 @@
 import React from "react";
-import { Field, reduxForm, SubmissionError } from "redux-form";
+import { Field, reduxForm /* SubmissionError */ } from "redux-form";
 // import PdfGenFormComponentRedux from "./PdfGenFormComponentRedux";
 // import { connect } from "react-redux";
 import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
+import CustomerInformation from "./CustomerInformation";
 // import CustomerInformation from "./CustomerInformation";
 // import Testcomp from "./Testcomp";
 // import SowType from "./SOWType";
 // import ProductSow from "./SOW_Type/ProductSow";
 // import TeraDataSow from "./SOW_Type/TeraDataSOW";
 // import CustomSow from "./SOW_Type/CustomSOW";
-// import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
+import CustomProfExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
+import TeradataExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
+import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
 // import PropTypes from "prop-types";
 
-export const PdfGenFormContainerRedux = ({
-  handleSubmit,
-  error,
-  touched,
-  dirty,
-  values
-}) => {
-  // const { meta: { error, touched, dirty } } = this.props;
-
-  //  const { meta: { handleSubmit, error, touched, dirty } } = props;
-  //  console.log(props);
+export const PdfGenFormContainerRedux = (props) => {
+  console.log(props);
 
   const submitForm = (values) => {
     console.log("Submission Info: ", values);
   };
+
+  // const clearForm = () => {
+  //   console.log("clearForm ");
+  // };
   // const submitForm = ({ values, serviceRegion, customerInformation = "" }) => {
   //   let error = {};
   //   let isError = false;
@@ -50,7 +48,7 @@ export const PdfGenFormContainerRedux = ({
 
   return (
     <div>
-      <form className="formContainer" onSubmit={handleSubmit(submitForm)}>
+      <form className="formContainer" onSubmit={props.handleSubmit(submitForm)}>
         <div>
           <div className="form-group">
             <div>
@@ -75,24 +73,57 @@ export const PdfGenFormContainerRedux = ({
             <label className="form-label">Customer Information</label>
             <div>
               <Field
-                className="form-control"
                 name="customerInformation"
-                component="textarea"
-                rows={
-                  10 // if want to get the value of this field, you reference it by name
-                }
-                style={"resize" ? null : { resize: "none" }}
+                component={CustomerInformation}
                 placeholder={"Enter Customer Information Here"}
               />
-              <span className="error">{error}</span>
+              {/* <span className="error">{props.error}</span> */}
             </div>
           </div>
         </div>
+
+        <div className="form-group">
+          <div>
+            <label className="form-label">SOW Type</label>
+            {/* SOW Type */}
+            <div>
+              <Field
+                name="Product SOW"
+                label={"Product Sow"}
+                component={ProdSOWExtOptions}
+              />
+              {/* <span className="error">{props.error}</span> */}
+            </div>
+            {/* Teradata */}
+            <div>
+              <Field
+                name="Teradata Customer SOW"
+                label={"Teradata Customer SOW"}
+                component={TeradataExtOptions}
+              />
+              {/* <span className="error">{props.error}</span> */}
+            </div>
+            {/* Custom Professional Services */}
+            <div>
+              <Field
+                name="Custom Professional Services"
+                label={"TCustom Professional Services"}
+                component={CustomProfExtOptions}
+              />
+              {/* <span className="error">{props.error}</span> */}
+            </div>
+          </div>
+        </div>
+
         <div>
           <button className="btn btn-primary float-right" type="submit">
             Submit
           </button>
-          <button className="btn btn-primary float-left" type="submit">
+          <button
+            className="btn btn-primary float-left"
+            type="submit"
+            onClick={props.reset}
+          >
             Clear Form
           </button>
         </div>
