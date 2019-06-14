@@ -1,6 +1,6 @@
 import React from "react";
 import { Field } from "redux-form";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const ServiceRegionRadioBtns = ({ name, options }) => (
   <div className="form-label">
@@ -30,13 +30,13 @@ const ServiceRegionRadioBtns = ({ name, options }) => (
 
 export default ServiceRegionRadioBtns;
 
-ServiceRegionRadioBtns.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
-    })
-  ),
-  name: PropTypes.string.isRequired
-};
+// ServiceRegionRadioBtns.propTypes = {
+//   options: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       label: PropTypes.string.isRequired,
+//       value: PropTypes.string.isRequired
+//     })
+//   ),
+//   name: PropTypes.string.isRequired
+// };

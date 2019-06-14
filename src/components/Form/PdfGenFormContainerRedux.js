@@ -1,5 +1,11 @@
 import React from "react";
-import { Field, reduxForm /* SubmissionError */ } from "redux-form";
+import { connect } from "react-redux";
+import {
+  Field,
+  reduxForm,
+  getFormValues,
+  formValueSelector /* SubmissionError */
+} from "redux-form";
 // import PdfGenFormComponentRedux from "./PdfGenFormComponentRedux";
 // import { connect } from "react-redux";
 import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
@@ -10,16 +16,20 @@ import CustomerInformation from "./CustomerInformation";
 // import ProductSow from "./SOW_Type/ProductSow";
 // import TeraDataSow from "./SOW_Type/TeraDataSOW";
 // import CustomSow from "./SOW_Type/CustomSOW";
-import CustomProfExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
-import TeradataExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
+import CustomProfExtOptions from "./ExtendedOptions/CustomProfExtOptions";
+import TeradataExtOptions from "./ExtendedOptions/TeradataExtOptions";
 import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
 // import PropTypes from "prop-types";
 
-export const PdfGenFormContainerRedux = (props) => {
+let formId = "StatementOfWorkApplication";
+
+let PdfGenFormContainerRedux = (props) => {
   console.log(props);
 
   const submitForm = (values) => {
     console.log("Submission Info: ", values);
+    // console.log(values.serviceRegion);
+    // console.log(values.teradataExtCustComponent);
   };
 
   // const clearForm = () => {
@@ -77,40 +87,95 @@ export const PdfGenFormContainerRedux = (props) => {
                 component={CustomerInformation}
                 placeholder={"Enter Customer Information Here"}
               />
-              {/* <span className="error">{props.error}</span> */}
             </div>
           </div>
         </div>
 
         <div className="form-group">
-          <div>
-            <label className="form-label">SOW Type</label>
-            {/* SOW Type */}
+          <label className="form-label">
+            SOW Type
+            <h6>What type of SOW do you want to generate?</h6>
+          </label>
+          {/* SOW Type */}
+          <div className="checkbox-group">
             <div>
-              <Field
-                name="Product SOW"
-                label={"Product Sow"}
-                component={ProdSOWExtOptions}
-              />
-              {/* <span className="error">{props.error}</span> */}
+              <label className="checkbox-group">
+                <Field
+                  name="productSOW"
+                  className="form-checkbox"
+                  component="input"
+                  type="checkbox"
+                />
+                Product Sow
+                {props.hasProductSowValue && (
+                  <div>
+                    <Field
+                      name="extCustComponent"
+                      type="input"
+                      component={ProdSOWExtOptions}
+                      label="Extended Customer Info"
+                      placeholder="Extended Text Area"
+                    />
+                  </div>
+                )}
+              </label>
             </div>
-            {/* Teradata */}
+          </div>
+
+          {/* Teradata */}
+
+          <div className="checkbox-group">
             <div>
-              <Field
-                name="Teradata Customer SOW"
-                label={"Teradata Customer SOW"}
-                component={TeradataExtOptions}
-              />
-              {/* <span className="error">{props.error}</span> */}
+              <label className="checkbox-group">
+                <Field
+                  name="teradata"
+                  className="form-checkbox"
+                  component="input"
+                  type="checkbox"
+                />
+                Teradata Customer SOW
+                {props.hasTeradataExtOptionsValue && (
+                  <div>
+                    <Field
+                      name="teradataExtCustComponent"
+                      type="input"
+                      component={TeradataExtOptions}
+                      label="This is the TeradataExtOptions component"
+                      placeholder="Teradata Extended Options"
+                    />
+                  </div>
+                )}
+              </label>
             </div>
-            {/* Custom Professional Services */}
+          </div>
+
+          {/* Custom Options */}
+
+          <div className="checkbox-group">
             <div>
-              <Field
-                name="Custom Professional Services"
-                label={"TCustom Professional Services"}
-                component={CustomProfExtOptions}
-              />
-              {/* <span className="error">{props.error}</span> */}
+              <label className="checkbox-group">
+                <Field
+                  name="customExtOptions"
+                  className="form-checkbox"
+                  component="input"
+                  type="checkbox"
+                />
+                Custom Professional Services SOW
+                {props.hasCustomProfExtOptionsValue && (
+                  <div>
+                    <Field
+                      name="custProfServices"
+                      type="input"
+                      component={CustomProfExtOptions}
+                      label="Custom Options Info"
+                      placeholder="Location"
+                      formId={formId}
+                      hasProfServ={props.hasProfServ}
+                      formValues={props.formValues}
+                    />
+                  </div>
+                )}
+              </label>
             </div>
           </div>
         </div>
@@ -132,8 +197,43 @@ export const PdfGenFormContainerRedux = (props) => {
   );
 };
 
-const formConfiguration = {
-  form: "Statement of Work Application"
-};
+// function mapStateToProps(state, ownProps) {
 
-export default reduxForm(formConfiguration)(PdfGenFormContainerRedux);
+//   const formValues = getFormValues("gamesettingsForm")(state) || {};
+//   return {
+//     initialValues,
+//     formValues,
+//   };
+// }
+
+// const mapStateToProps = (state) => ({
+//   formValues: getFormValues("StatementOfWorkApplication")(state)
+// });
+// const formConfiguration = {
+//   form: "StatementOfWorkApplication"
+// };
+
+// // console.log(formValues);
+
+// export default connect(mapStateToProps)(
+//   reduxForm(formConfiguration)(PdfGenFormContainerRedux)
+// );
+
+PdfGenFormContainerRedux = reduxForm({
+  form: "StatementOfWorkApplication"
+})(PdfGenFormContainerRedux);
+
+const selector = formValueSelector("StatementOfWorkApplication");
+PdfGenFormContainerRedux = connect((state) => {
+  const hasProductSowValue = selector(state, "productSOW");
+  const hasTeradataExtOptionsValue = selector(state, "teradata");
+  const hasCustomProfExtOptionsValue = selector(state, "customExtOptions");
+  // const hasProfServ = selector(state, "custProfServiceTwo");
+  return {
+    hasProductSowValue,
+    hasTeradataExtOptionsValue,
+    hasCustomProfExtOptionsValue
+  };
+})(PdfGenFormContainerRedux);
+
+export default PdfGenFormContainerRedux;

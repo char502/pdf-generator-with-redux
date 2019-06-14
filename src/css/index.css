@@ -71,20 +71,16 @@ textarea.form-control {
 div.checkbox-group label {
   margin-left: 30px;
   padding: 10px;
+  /* display: inline-block; */
   display: block;
   margin-right: 0;
 
   /* border: 1px solid darkgray; */
 }
 
-input#SOW Type.form-checkbox {
-  /* padding: 50px; */
+input#productSOW.form-checkbox {
   margin-right: 10px;
 }
-
-/* input.form-checkbox {
-  padding-left: 30px;
-} */
 
 /* Retrieve Previous page */
 /* CSS goes here */

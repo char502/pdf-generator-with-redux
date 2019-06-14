@@ -1,18 +1,23 @@
 import React from "react";
 
-const ProdSOWExtOptions = (props) => {
+const ProdSOWExtOptions = ({ label, placeholder, input }) => {
+  console.log(placeholder, input);
   return (
-    <div>
-      <div className="form-label" />
-      <div>
-        <input
-          className="form-control"
-          {...props.input}
-          type="checkbox"
-          checked={props.input.value}
-          label={props.label}
-        />
-      </div>
+    <div className="form-group">
+      <label className="form-label">{label}</label>
+      <textarea
+        className="form-control"
+        {...input}
+        /* type="textarea" */
+        rows={3}
+        placeholder={placeholder}
+        style={"resize" ? null : { resize: "none" }}
+      />
+      {/* FieldArray for tape selections */}
+      {/* <FieldArray
+        name="testArray"
+        component={}
+      /> */}
     </div>
   );
 };
