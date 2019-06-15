@@ -6,16 +6,8 @@ import {
   getFormValues,
   formValueSelector /* SubmissionError */
 } from "redux-form";
-// import PdfGenFormComponentRedux from "./PdfGenFormComponentRedux";
-// import { connect } from "react-redux";
 import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
 import CustomerInformation from "./CustomerInformation";
-// import CustomerInformation from "./CustomerInformation";
-// import Testcomp from "./Testcomp";
-// import SowType from "./SOWType";
-// import ProductSow from "./SOW_Type/ProductSow";
-// import TeraDataSow from "./SOW_Type/TeraDataSOW";
-// import CustomSow from "./SOW_Type/CustomSOW";
 import CustomProfExtOptions from "./ExtendedOptions/CustomProfExtOptions";
 import TeradataExtOptions from "./ExtendedOptions/TeradataExtOptions";
 import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
@@ -26,8 +18,9 @@ let formId = "StatementOfWorkApplication";
 let PdfGenFormContainerRedux = (props) => {
   console.log(props);
 
-  const submitForm = (values) => {
-    console.log("Submission Info: ", values);
+  const submitForm = (formValues) => {
+    console.log("Submission Info: ", formValues);
+    console.log(formValues.productSOW);
     // console.log(values.serviceRegion);
     // console.log(values.teradataExtCustComponent);
   };
@@ -196,28 +189,6 @@ let PdfGenFormContainerRedux = (props) => {
     </div>
   );
 };
-
-// function mapStateToProps(state, ownProps) {
-
-//   const formValues = getFormValues("gamesettingsForm")(state) || {};
-//   return {
-//     initialValues,
-//     formValues,
-//   };
-// }
-
-// const mapStateToProps = (state) => ({
-//   formValues: getFormValues("StatementOfWorkApplication")(state)
-// });
-// const formConfiguration = {
-//   form: "StatementOfWorkApplication"
-// };
-
-// // console.log(formValues);
-
-// export default connect(mapStateToProps)(
-//   reduxForm(formConfiguration)(PdfGenFormContainerRedux)
-// );
 
 PdfGenFormContainerRedux = reduxForm({
   form: "StatementOfWorkApplication"

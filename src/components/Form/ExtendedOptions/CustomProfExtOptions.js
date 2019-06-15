@@ -11,6 +11,7 @@ let CustomProfExtOptions = (props) => {
         <label className="form-label">
           <h6>Where the work will be performed:</h6>
           <input
+            {...input}
             className="form-control"
             style={{ width: "500px" }}
             placeholder={placeholder}
@@ -33,14 +34,50 @@ let CustomProfExtOptions = (props) => {
             Customised Professional Services
             {props.hasProfServ && (
               <div>
-                <Field
-                  name="custProfServiceTwo"
-                  type="input"
-                  component="input"
-                  /* component={ExtOptions} */
-                  /* label="Custom Options Info"
-                  placeholder="Location" */
-                />
+                <div>
+                  <Field
+                    name="custProfServiceOne"
+                    className="form-checkbox"
+                    type="input"
+                    component="input"
+                    /* component={ExtOptions} */
+                    /* label="Custom Options Info" */
+                    placeholder="Box One"
+                  />
+                </div>
+                <div>
+                  <Field
+                    name="custProfServiceTwo"
+                    className="form-checkbox"
+                    type="input"
+                    component="input"
+                    /* component={ExtOptions} */
+                    /* label="Custom Options Info" */
+                    placeholder="Box Two"
+                  />
+                </div>
+                <div>
+                  <Field
+                    name="custProfServiceThree"
+                    className="form-checkbox"
+                    type="input"
+                    component="input"
+                    /* component={ExtOptions} */
+                    /* label="Custom Options Info" */
+                    placeholder="Box Three"
+                  />
+                </div>
+                <div>
+                  <Field
+                    name="custProfServiceFour"
+                    className="form-checkbox"
+                    type="input"
+                    component="input"
+                    /* component={ExtOptions} */
+                    /* label="Custom Options Info" */
+                    placeholder="Box Four"
+                  />
+                </div>
               </div>
             )}
           </label>
@@ -55,41 +92,16 @@ let CustomProfExtOptions = (props) => {
   );
 };
 
-// export default reduxForm({
-//   form: 'CustomProfExtOptions'
-// })(CustomProfExtOptions);
+CustomProfExtOptions = reduxForm({
+  form: "StatementOfWorkApplication"
+})(CustomProfExtOptions);
 
-// CustomProfExtOptions = reduxForm({
-//   form: "StatementOfWorkApplication"
-// })(CustomProfExtOptions);
+const selector = formValueSelector("StatementOfWorkApplication");
+CustomProfExtOptions = connect((state) => {
+  const hasProfServ = selector(state, "customTwoCheckbox");
+  return {
+    hasProfServ
+  };
+})(CustomProfExtOptions);
 
 export default CustomProfExtOptions;
-
-// CustomProfExtOptions = reduxForm({
-//   form: form,
-//   destroyOnUnmount: false
-// })(CustomProfExtOptions);
-
-// CustomProfExtOptions = reduxForm({
-//   form: "StatementOfWorkApplication"
-// })(CustomProfExtOptions);
-
-// const selector = formValueSelector(props.form);
-// console.log(selector);
-
-// const selector = formValueSelector("StatementOfWorkApplication");
-
-// const mapStateToProps = (reducers) => {
-//   const hasProfServ = selector(reducers, "custProfServiceTwo");
-//   return { hasProfServ };
-// };
-
-// CustomProfExtOptions = connect((state) => {
-//   const hasProfServ = selector(state, "custProfServiceTwo");
-//   return {
-//     hasProfServ
-//   };
-// })(CustomProfExtOptions);
-
-// export default CustomProfExtOptions;
-// export default connect(mapStateToProps)(CustomProfExtOptions);
