@@ -2,18 +2,56 @@ import React from "react";
 import { connect } from "react-redux";
 import { Field, formValueSelector, reduxForm } from "redux-form";
 
+// const renderField = ({ input, label, type, meta: { touched, error } }) => (
+//   <div>
+//     <label>{label}</label>
+//     <div>
+//       <input {...input} type={type} placeholder={label} />
+//       {touched && error && <span>{error}</span>}
+//     </div>
+//   </div>
+// );
+
+const renderCustomServOption = (service, index, fields) => (
+  <li key={index}>
+    Customised Service {index + 1}:{" "}
+    <Field
+      name={`${service}.firstName`}
+      type="text"
+      component="input"
+      style={{ width: "400px" }}
+      label="First Name"
+    />
+    <button
+      type="button"
+      className="btn btn-danger"
+      size="sm"
+      title="Remove Service"
+      onClick={() => fields.remove(index)}
+    >
+      <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      remove
+    </button>
+  </li>
+);
+
 let CustomProfExtOptions = (props) => {
-  const { formValues, formId, hasProfServ, placeholder, input } = props;
-  console.log(formValues, formId, hasProfServ, placeholder, input);
+  const {
+    placeholder,
+    input,
+    fields,
+    meta: { error }
+  } = props;
+  console.log(fields);
   return (
     <div>
       <div className="form-group">
-        <label className="form-label">
-          <h6>Where the work will be performed:</h6>
+        <label className="checkbox-group">
+          Where the work will be performed:{" "}
           <input
             {...input}
-            className="form-control"
-            style={{ width: "500px" }}
+            className="form-checkbox"
+            style={{ width: "400px" }}
             placeholder={placeholder}
           />
         </label>
@@ -21,7 +59,7 @@ let CustomProfExtOptions = (props) => {
 
       <div className="form-group">
         <label className="form-label">
-          <h6>Select the work to be performed</h6>
+          Detail the work to be performed (up to 10 requirements)
         </label>
         <div>
           <label className="checkbox-group">
@@ -31,17 +69,43 @@ let CustomProfExtOptions = (props) => {
               type="checkbox"
               component="input"
             />
-            Customised Professional Services
+            Custom Professional Services
             {props.hasProfServ && (
               <div>
-                <div>
+                <ul>
+                  <div>
+                    <label className="custom-Prof-Serv-group">
+                      Customised Service Title:{" "}
+                      <Field
+                        name="CustomPSTitle"
+                        className="custom-Prof-Serv-group"
+                        component="input"
+                        type="input"
+                        style={{ width: "400px" }}
+                        placeholder="Custom Professional Service Title"
+                      />
+                    </label>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="btn btn-primary text-center}"
+                    onClick={() => fields.push({})}
+                  >
+                    Add Service
+                  </button>
+
+                  {fields.map(renderCustomServOption)}
+
+                  {error && <li className="error">{error}</li>}
+                </ul>
+
+                {/* <div>
                   <Field
                     name="custProfServiceOne"
                     className="form-checkbox"
                     type="input"
                     component="input"
-                    /* component={ExtOptions} */
-                    /* label="Custom Options Info" */
                     placeholder="Box One"
                   />
                 </div>
@@ -51,8 +115,6 @@ let CustomProfExtOptions = (props) => {
                     className="form-checkbox"
                     type="input"
                     component="input"
-                    /* component={ExtOptions} */
-                    /* label="Custom Options Info" */
                     placeholder="Box Two"
                   />
                 </div>
@@ -62,8 +124,6 @@ let CustomProfExtOptions = (props) => {
                     className="form-checkbox"
                     type="input"
                     component="input"
-                    /* component={ExtOptions} */
-                    /* label="Custom Options Info" */
                     placeholder="Box Three"
                   />
                 </div>
@@ -73,11 +133,10 @@ let CustomProfExtOptions = (props) => {
                     className="form-checkbox"
                     type="input"
                     component="input"
-                    /* component={ExtOptions} */
-                    /* label="Custom Options Info" */
                     placeholder="Box Four"
                   />
-                </div>
+                </div> */}
+                {/* <FieldArray name="serviceItem" component={input} /> */}
               </div>
             )}
           </label>

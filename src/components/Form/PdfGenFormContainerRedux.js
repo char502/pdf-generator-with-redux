@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import {
   Field,
   reduxForm,
-  getFormValues,
-  formValueSelector /* SubmissionError */
+  formValueSelector,
+  FieldArray /* SubmissionError */
 } from "redux-form";
 import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
 import CustomerInformation from "./CustomerInformation";
@@ -13,14 +13,14 @@ import TeradataExtOptions from "./ExtendedOptions/TeradataExtOptions";
 import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
 // import PropTypes from "prop-types";
 
-let formId = "StatementOfWorkApplication";
+// let formId = "StatementOfWorkApplication";
 
 let PdfGenFormContainerRedux = (props) => {
   console.log(props);
 
   const submitForm = (formValues) => {
     console.log("Submission Info: ", formValues);
-    console.log(formValues.productSOW);
+    // console.log(formValues.productSOW);
     // console.log(values.serviceRegion);
     // console.log(values.teradataExtCustComponent);
   };
@@ -62,8 +62,7 @@ let PdfGenFormContainerRedux = (props) => {
                 options={[
                   { id: 0, label: "EMEA", value: "EMEA" },
                   { id: 1, label: "APAC", value: "APAC" },
-                  { id: 2, label: "NA & LATAM", value: "NA & LATAM" },
-                  { id: 3, label: "Test", value: "Test" }
+                  { id: 2, label: "NA & LATAM", value: "NA & LATAM" }
                 ]}
               />
               {/* <span className="error">{error}</span> */}
@@ -156,15 +155,21 @@ let PdfGenFormContainerRedux = (props) => {
                 Custom Professional Services SOW
                 {props.hasCustomProfExtOptionsValue && (
                   <div>
-                    <Field
+                    {/* <Field
                       name="custProfServices"
                       type="input"
                       component={CustomProfExtOptions}
                       label="Custom Options Info"
                       placeholder="Location"
-                      formId={formId}
-                      hasProfServ={props.hasProfServ}
-                      formValues={props.formValues}
+
+                      fields={FieldArray}
+                    /> */}
+                    <FieldArray
+                      name="custProfServices"
+                      type="input"
+                      component={CustomProfExtOptions}
+                      label="Custom Options Info"
+                      placeholder="Enter Location"
                     />
                   </div>
                 )}
@@ -199,7 +204,6 @@ PdfGenFormContainerRedux = connect((state) => {
   const hasProductSowValue = selector(state, "productSOW");
   const hasTeradataExtOptionsValue = selector(state, "teradata");
   const hasCustomProfExtOptionsValue = selector(state, "customExtOptions");
-  // const hasProfServ = selector(state, "custProfServiceTwo");
   return {
     hasProductSowValue,
     hasTeradataExtOptionsValue,

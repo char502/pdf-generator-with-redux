@@ -78,6 +78,10 @@ div.checkbox-group label {
   /* border: 1px solid darkgray; */
 }
 
+.custom-add-service {
+  padding: 5px;
+}
+
 input#productSOW.form-checkbox {
   margin-right: 10px;
 }
