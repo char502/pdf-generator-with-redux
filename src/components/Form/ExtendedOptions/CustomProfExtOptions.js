@@ -16,15 +16,15 @@ const renderCustomServOption = (service, index, fields) => (
   <li key={index}>
     Customised Service {index + 1}:{" "}
     <Field
-      name={`${service}.firstName`}
+      name={`${service}.customService`}
       type="text"
       component="input"
-      style={{ width: "400px" }}
+      style={{ width: "600px" }}
       label="First Name"
     />
     <button
       type="button"
-      className="btn btn-danger"
+      className="btn btn-danger btn-sm"
       size="sm"
       title="Remove Service"
       onClick={() => fields.remove(index)}
@@ -81,7 +81,7 @@ let CustomProfExtOptions = (props) => {
                         className="custom-Prof-Serv-group"
                         component="input"
                         type="input"
-                        style={{ width: "400px" }}
+                        style={{ width: "500px" }}
                         placeholder="Custom Professional Service Title"
                       />
                     </label>
@@ -89,7 +89,7 @@ let CustomProfExtOptions = (props) => {
 
                   <button
                     type="button"
-                    className="btn btn-primary text-center}"
+                    className="btn btn-primary btn-sm text-center}"
                     onClick={() => fields.push({})}
                   >
                     Add Service
