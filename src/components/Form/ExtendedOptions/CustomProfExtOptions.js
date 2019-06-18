@@ -29,8 +29,8 @@ const renderCustomServOption = (service, index, fields) => (
       title="Remove Service"
       onClick={() => fields.remove(index)}
     >
-      <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
       remove
+      {/* <i className="far fa-trash-alt"> */}
     </button>
   </li>
 );
