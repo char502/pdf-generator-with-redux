@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Field, formValueSelector, reduxForm } from "redux-form";
 
+import { FaRegTrashAlt } from "react-icons/fa";
+
 // const renderField = ({ input, label, type, meta: { touched, error } }) => (
 //   <div>
 //     <label>{label}</label>
@@ -17,6 +19,7 @@ const renderCustomServOption = (service, index, fields) => (
     Customised Service {index + 1}:{" "}
     <Field
       name={`${service}.customService`}
+      key={index}
       type="text"
       component="input"
       style={{ width: "600px" }}
@@ -29,8 +32,7 @@ const renderCustomServOption = (service, index, fields) => (
       title="Remove Service"
       onClick={() => fields.remove(index)}
     >
-      remove
-      {/* <i className="far fa-trash-alt"> */}
+      <FaRegTrashAlt />
     </button>
   </li>
 );
@@ -142,11 +144,6 @@ let CustomProfExtOptions = (props) => {
           </label>
         </div>
       </div>
-
-      {/* <FieldArray
-        name="testArray"
-        component={}
-      /> */}
     </div>
   );
 };

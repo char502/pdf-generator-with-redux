@@ -13,10 +13,6 @@ import TeradataExtOptions from "./ExtendedOptions/TeradataExtOptions";
 import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
 // import PropTypes from "prop-types";
 
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 let PdfGenFormContainerRedux = (props) => {
   console.log(props);
 
@@ -107,7 +103,7 @@ let PdfGenFormContainerRedux = (props) => {
                       name="extCustComponent"
                       type="input"
                       component={ProdSOWExtOptions}
-                      label="Extended Customer Info"
+                      label="Select a Product Family"
                       placeholder="Extended Text Area"
                     />
                   </div>
@@ -172,10 +168,6 @@ let PdfGenFormContainerRedux = (props) => {
                       component={CustomProfExtOptions}
                       label="Custom Options Info"
                       placeholder="Enter Location"
-                      FontAwesomeIcon
-                      icon={faTrashAlt}
-
-                      /* FontAwesomeIcon icon="<i class=" far fa-trash-alt"></i>" */
                     />
                   </div>
                 )}
