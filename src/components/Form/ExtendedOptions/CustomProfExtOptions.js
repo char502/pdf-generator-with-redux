@@ -45,6 +45,7 @@ let CustomProfExtOptions = (props) => {
     meta: { error }
   } = props;
   console.log(fields);
+
   return (
     <div>
       <div className="form-group">
@@ -101,43 +102,6 @@ let CustomProfExtOptions = (props) => {
 
                   {error && <li className="error">{error}</li>}
                 </ul>
-
-                {/* <div>
-                  <Field
-                    name="custProfServiceOne"
-                    className="form-checkbox"
-                    type="input"
-                    component="input"
-                    placeholder="Box One"
-                  />
-                </div>
-                <div>
-                  <Field
-                    name="custProfServiceTwo"
-                    className="form-checkbox"
-                    type="input"
-                    component="input"
-                    placeholder="Box Two"
-                  />
-                </div>
-                <div>
-                  <Field
-                    name="custProfServiceThree"
-                    className="form-checkbox"
-                    type="input"
-                    component="input"
-                    placeholder="Box Three"
-                  />
-                </div>
-                <div>
-                  <Field
-                    name="custProfServiceFour"
-                    className="form-checkbox"
-                    type="input"
-                    component="input"
-                    placeholder="Box Four"
-                  />
-                </div> */}
                 {/* <FieldArray name="serviceItem" component={input} /> */}
               </div>
             )}

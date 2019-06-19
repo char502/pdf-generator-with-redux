@@ -1,0 +1,63 @@
+// ({ label, placeholder, input }) => {
+//   console.log(placeholder, input);
+
+  // componentWillUpdate(nextProps) {
+  //   if (this.props.country != nextProps.country) {
+  //     this.props.dispatch(change('form', 'city', ''));
+  //   }
+  // }
+
+  // componentDidUpdate(prevProps, prevState, snapshot)
+  // {
+  //   if (this.props.country != nextProps.country) {
+  //     this.props.dispatch(change('form', 'city', ''));
+  //   }
+  // }
+
+
+//   return (
+//     <div className="form-group">
+//       <label className="form-label">{label}</label>
+//       <div>
+//         <label className="checkbox-group">
+//           {" "}
+//           Product SOW:{" "}
+//           <Field name="productFamily" component="select">
+//             <option>Select a Product Family</option>
+//             <option value="DXiProducts">DXi Products</option>
+//             <option value="EncryptionKeyManagerProducts">
+//               Encryption Key Manager Products
+//             </option>
+//             <option value="LATTUS">LATTUS</option>
+//             <option value="OtherProductsBrocade">
+//               Other Products (Brocade)
+//             </option>
+//             <option value="QXSDiskSystems">
+//               QXS Disk Systems, StorNext Q-Series Disk and StorNext
+//               QX/QXS-Series Disk
+//             </option>
+//             <option value="ScalarProducts">Scalar Products</option>
+//             <option value="StorNextAELArchives">StorNext AEL Archives</option>
+//             <option value="StorNextAppliances">
+//               StorNext Appliances, Xcellis and Artico (AEL and Disk in seperate
+//               sections)
+//             </option>
+//             <option value="StorNextProSolutionInstallation">
+//               StorNext ProSolution Installation
+//             </option>
+//             <option value="StorNextSoftwareAndServices">
+//               StorNext Software and Professional Services
+//             </option>
+//             <option value="SuperLoader3">SuperLoader 3</option>
+//           </Field>
+//         </label>
+//       </div>
+
+//       {/* FieldArray for tape selections */}
+//       {/* <FieldArray
+//         name="testArray"
+//         component={}
+//       /> */}
+//     </div>
+//   );
+// };
