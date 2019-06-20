@@ -3,7 +3,7 @@ import React from "react";
 // import PropTypes from "prop-types";
 
 const CustomerInformation = ({ placeholder, input }) => {
-  console.log(input);
+  // console.log(input);
   return (
     <div>
       <div className="form-label" />

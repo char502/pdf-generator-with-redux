@@ -10,7 +10,7 @@ import ServiceRegionRadioBtns from "./ServiceRegionRadioBtns";
 import CustomerInformation from "./CustomerInformation";
 import CustomProfExtOptions from "./ExtendedOptions/CustomProfExtOptions";
 import TeradataExtOptions from "./ExtendedOptions/TeradataExtOptions";
-import ProdSOWExtOptions from "./ExtendedOptions/ProdSOWExtOptions";
+import ProdSOWExtOptionsDropdown from "./ExtendedOptions/ProdSOWExtOptionsDropdown";
 // import PropTypes from "prop-types";
 
 let PdfGenFormContainerRedux = (props) => {
@@ -100,9 +100,9 @@ let PdfGenFormContainerRedux = (props) => {
                 {props.hasProductSowValue && (
                   <div>
                     <Field
-                      name="extCustComponent"
+                      name="extCustComponentDropdown"
                       type="input"
-                      component={ProdSOWExtOptions}
+                      component={ProdSOWExtOptionsDropdown}
                       label="Select a Product Family"
                       placeholder="Extended Text Area"
                     />

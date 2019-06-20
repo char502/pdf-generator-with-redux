@@ -3,7 +3,57 @@ import { connect } from "react-redux";
 
 import { change, Field, formValueSelector, reduxForm } from "redux-form";
 
-class ProdSOWExtOptions extends React.Component {
+// class ProdConfigOptions extends React.component {
+//   render() {
+//     return (
+//       <div className="form-group">
+//         <label className="form-label">{this.props.label}</label>
+//         <div>
+//           <label className="checkbox-group">
+//             {" "}
+//             Product Selection:{" "}
+//             <Field name="productFamily" component="select">
+//               <option>Select a Product Family</option>
+//               <option value="DXiProducts">DXi Products</option>
+//               <option value="EncryptionKeyManagerProducts">
+//                 Encryption Key Manager Products
+//               </option>
+//               <option value="LATTUS">LATTUS</option>
+//               <option value="OtherProductsBrocade">
+//                 Other Products (Brocade)
+//               </option>
+//               <option value="QXSDiskSystems">
+//                 QXS Disk Systems, StorNext Q-Series Disk and StorNext
+//                 QX/QXS-Series Disk
+//               </option>
+//               <option value="ScalarProducts">Scalar Products</option>
+//               <option value="StorNextAELArchives">StorNext AEL Archives</option>
+//               <option value="StorNextAppliances">
+//                 StorNext Appliances, Xcellis and Artico (AEL and Disk in
+//                 seperate sections)
+//               </option>
+//               <option value="StorNextProSolutionInstallation">
+//                 StorNext ProSolution Installation
+//               </option>
+//               <option value="StorNextSoftwareAndServices">
+//                 StorNext Software and Professional Services
+//               </option>
+//               <option value="SuperLoader3">SuperLoader 3</option>
+//             </Field>
+//           </label>
+//         </div>
+
+//         {/* FieldArray for tape selections */}
+//         {/* <FieldArray
+//           name="testArray"
+//           component={}
+//         /> */}
+//       </div>
+//     );
+//   }
+// }
+
+class ProdSOWExtOptionsDropdown extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -18,8 +68,8 @@ class ProdSOWExtOptions extends React.Component {
     if (
       this.props.hasProduct !== "Select a Product Family" /*nextProps.product */
     ) {
-      // this.props.dispatch(change("form", "productConfigurationOptions", ""));
-      alert("option changed to: ", this.props.productFamily);
+      this.props.dispatch(change("form", "productConfigurationOptions", ""));
+      // alert("option changed to: ", this.props.productFamily);
 
       // console.log("option changed to: ", nextProps);
       console.log("option was: ", this.props.hasProduct);
@@ -32,7 +82,7 @@ class ProdSOWExtOptions extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.input);
 
     return (
       <div className="form-group">
@@ -69,38 +119,6 @@ class ProdSOWExtOptions extends React.Component {
               </option>
               <option value="SuperLoader3">SuperLoader 3</option>
             </Field>
-            {this.props.productFamily && (
-              <Field name="productConfigurationOptions" component="select">
-                <option>Select a Configuration Option</option>
-                <option value="DXiProducts">DXi Products</option>
-                <option value="EncryptionKeyManagerProducts">
-                  Encryption Key Manager Products
-                </option>
-                <option value="LATTUS">LATTUS</option>
-                <option value="OtherProductsBrocade">
-                  Other Products (Brocade)
-                </option>
-                <option value="QXSDiskSystems">
-                  QXS Disk Systems, StorNext Q-Series Disk and StorNext
-                  QX/QXS-Series Disk
-                </option>
-                <option value="ScalarProducts">Scalar Products</option>
-                <option value="StorNextAELArchives">
-                  StorNext AEL Archives
-                </option>
-                <option value="StorNextAppliances">
-                  StorNext Appliances, Xcellis and Artico (AEL and Disk in
-                  seperate sections)
-                </option>
-                <option value="StorNextProSolutionInstallation">
-                  StorNext ProSolution Installation
-                </option>
-                <option value="StorNextSoftwareAndServices">
-                  StorNext Software and Professional Services
-                </option>
-                <option value="SuperLoader3">SuperLoader 3</option>
-              </Field>
-            )}
           </label>
         </div>
 
@@ -114,13 +132,13 @@ class ProdSOWExtOptions extends React.Component {
   }
 }
 
-ProdSOWExtOptions = reduxForm({
+ProdSOWExtOptionsDropdown = reduxForm({
   form: "StatementOfWorkApplication"
-})(ProdSOWExtOptions);
+})(ProdSOWExtOptionsDropdown);
 
 const selector = formValueSelector("StatementOfWorkApplication");
 
-ProdSOWExtOptions = connect((state) => {
+ProdSOWExtOptionsDropdown = connect((state) => {
   const hasProduct = selector(state, "productFamily");
   const hasProductConfigurationOptions = selector(
     state,
@@ -130,6 +148,6 @@ ProdSOWExtOptions = connect((state) => {
     hasProduct,
     hasProductConfigurationOptions
   };
-})(ProdSOWExtOptions);
+})(ProdSOWExtOptionsDropdown);
 
-export default ProdSOWExtOptions;
+export default ProdSOWExtOptionsDropdown;

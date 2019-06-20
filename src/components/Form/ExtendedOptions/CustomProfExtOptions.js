@@ -44,7 +44,8 @@ let CustomProfExtOptions = (props) => {
     fields,
     meta: { error }
   } = props;
-  console.log(fields);
+  console.log(input);
+  // console.log(input);
 
   return (
     <div>

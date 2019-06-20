@@ -1,7 +1,7 @@
 import React from "react";
 
 const TeradataExtOptions = ({ label, placeholder, input }) => {
-  // console.log(placeholder, input);
+  console.log(input);
   return (
     <div className="form-group">
       <label className="form-label">{label}</label>
