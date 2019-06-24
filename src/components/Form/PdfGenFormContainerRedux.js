@@ -105,6 +105,41 @@ let PdfGenFormContainerRedux = (props) => {
                       component={ProdSOWExtOptionsDropdown}
                       label="Select a Product Family"
                       placeholder="Extended Text Area"
+                      options={[
+                        {
+                          id: 0,
+                          product: "Select a Product Family",
+                          productConfig: []
+                        },
+                        {
+                          id: 1,
+                          product: "DXi Products",
+                          productConfig: [
+                            "Select a DXI Config",
+                            "Artico Install and Config",
+                            "DXi47XX Onsite Install and Config",
+                            "DXi8500 Onsite Installation and Config"
+                          ]
+                        },
+                        {
+                          id: 2,
+                          product: "Encryption Key Manager Products",
+                          productConfig: [
+                            "Select an EKM Product Config",
+                            "Scalar Key MAnager",
+                            "Quantum Scalar"
+                          ]
+                        },
+                        {
+                          id: 3,
+                          product: "LATTUS",
+                          productConfig: [
+                            "Select a LATTUS Config",
+                            "Lattus Hardware Install",
+                            "Lattus Hardware Upgrade"
+                          ]
+                        }
+                      ]}
                     />
                   </div>
                 )}
