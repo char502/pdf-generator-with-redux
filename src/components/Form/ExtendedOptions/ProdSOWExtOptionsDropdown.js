@@ -9,6 +9,8 @@ import quantumDXiBackup from "../../../images/quantumDXiBackup.jpg";
 import quantumEncryptionKeyManager from "../../../images/quantumEncryptionKeyManager.jpg";
 import quantumLATTUSStorage from "../../../images/quantumLATTUSStorage.jpg";
 
+import quantumScalari3LTO from "../../../images/quantumScalari3LTO.jpg";
+
 class ProdSOWExtOptionsDropdown extends React.Component {
   // constructor(props) {
   //   super(props);
@@ -71,44 +73,142 @@ class ProdSOWExtOptionsDropdown extends React.Component {
           <label className="checkbox-group">
             {" "}
             <div>
-              <label className="prod-family-label">
-                <Field
-                  name="DXi Products"
-                  /* className="prod-checkbox" */
-                  type="checkbox"
-                  component="input"
-                />
-                <img src={quantumDXiBackup} alt="A DXi Backup machine" />
-                <span className="prod-family prod-family-img"></span>
-                DXi Products{" "}
-              </label>
+              {/* <container>
+                <row>
+                  <col xs={6} md={4}>
+                    <img src={quantumDXiBackup} alt="A DXi Backup machine" />
+                  </col>
+                  <col xs={6} md={4}>
+                    <img src={quantumDXiBackup} alt="A DXi Backup machine" />
+                  </col>
+                  <col xs={6} md={4}>
+                    <img src={quantumDXiBackup} alt="A DXi Backup machine" />
+                  </col>
+                </row>
+              </container> */}
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-3">
+                    <div className="thumbnail">
+                      <label className="prod-family-label">
+                        <img
+                          src={quantumDXiBackup}
+                          alt="A DXi Backup machine"
+                        />
+                        <Field
+                          name="DXi Products"
+                          className="prod-image-checkbox text-center"
+                          type="checkbox"
+                          component="input"
+                        />
+                        <div className="caption text-center">
+                          <p>DXi Products</p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div className="thumbnail">
+                      <label className="prod-family-label">
+                        <img
+                          src={quantumEncryptionKeyManager}
+                          alt="quantumEncryptionKeyManager"
+                        />
+                        <Field
+                          name="DXi Products"
+                          className="prod-checkbox"
+                          type="checkbox"
+                          component="input"
+                        />
+                        <div className="caption text-center">
+                          <p>Encryption Key Manager Products</p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div className="thumbnail">
+                      <label className="prod-family-label">
+                        <img
+                          src={quantumLATTUSStorage}
+                          alt="quantumLATTUSStorage"
+                        />
+                        <Field
+                          name="DXi Products"
+                          className="prod-checkbox"
+                          type="checkbox"
+                          component="input"
+                        />
+                        <div className="caption text-center">
+                          <p>LATTUS</p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div className="thumbnail">
+                      <label className="prod-family-label">
+                        <img
+                          src={quantumScalari3LTO}
+                          alt="quantumScalari3LTO"
+                        />
+                        <Field
+                          name="DXi Products"
+                          className="prod-checkbox"
+                          type="checkbox"
+                          component="input"
+                        />
+                        <div className="caption text-center">
+                          <p>Quantum Scalar i3LTO</p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <label className="prod-family-label">
-                <Field
-                  name="Encryption Key Manager Products"
-                  /* className="form-checkbox" */
-                  type="checkbox"
-                  component="input"
-                />
-                <img
-                  src={quantumEncryptionKeyManager}
-                  alt="quantumEncryptionKeyManager"
-                />
-                <span className="prod-family prod-family-img"></span>
-                Encryption Key Manager Products{" "}
-              </label>
-
-              <label className="prod-family-label">
-                <Field
-                  name="LATTUS"
-                  /* className="form-checkbox" */
-                  type="checkbox"
-                  component="input"
-                />
-                <img src={quantumLATTUSStorage} alt="quantumLATTUSStorage" />
-                <span className="prod-family prod-family-img"></span>
-                LATTUS{" "}
-              </label>
+              {/* <div className="col-md-4">
+                <label className="prod-family-label">
+                  <Field
+                    name="DXi Products"
+                    className="prod-checkbox"
+                    type="checkbox"
+                    component="input"
+                  />
+                  <img src={quantumDXiBackup} alt="A DXi Backup machine" />
+                  <span className="prod-family prod-family-img"></span>
+                  DXi Products{" "}
+                </label>
+              </div>
+              <div className="col-md-4">
+                <label className="prod-family-label">
+                  <Field
+                    name="Encryption Key Manager Products"
+                    className="form-checkbox"
+                    type="checkbox"
+                    component="input"
+                  />
+                  <img
+                    src={quantumEncryptionKeyManager}
+                    alt="quantumEncryptionKeyManager"
+                  />
+                  <span className="prod-family prod-family-img"></span>
+                  Encryption Key Manager Products{" "}
+                </label>
+              </div>
+              <div className="col-md-4">
+                <label className="prod-family-label">
+                  <Field
+                    name="LATTUS"
+                    className="form-checkbox"
+                    type="checkbox"
+                    component="input"
+                  />
+                  <img src={quantumLATTUSStorage} alt="quantumLATTUSStorage" />
+                  <span className="prod-family prod-family-img"></span>
+                  LATTUS{" "}
+                </label>
+              </div> */}
 
               {/* component={({ input, options }) =>
                 options.map((option) => (

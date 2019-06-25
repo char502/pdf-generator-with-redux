@@ -86,6 +86,13 @@ input#productSOW.form-checkbox {
   margin-right: 10px;
 }
 
+/* .productContainer {
+  margin: 5px;
+  padding: 20px;
+  background-color: #269ad2;
+  border-radius: 5px;
+} */
+
 /* checkbox with image */
 
 /* .prod-family {
@@ -99,22 +106,32 @@ input#productSOW.form-checkbox {
   height: 30px;
 }
 
-/* .prod-checkbox {
-  position: absolute;
-  right: 5px;
-  bottom: 3px;
-}  */
+/* .prod-image-checkbox {
+  position: relative;
+  width: 230px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  height: 30px;
 
-label {
+} */
+/* position: absolute;
+  right: 5px;
+  bottom: 3px; */
+
+/* label {
   display: inline-block;
-}
+} */
 
 img {
-  width: 150px;
-  height: 180px;
+  padding: 30px;
+  margin: 30px;
+  width: 275px;
+  height: 250px;
 }
 
-.prod-family > input[type="checkbox"] {
+/* /////////////////////////////////////////////////////// */
+
+/* .prod-family > input[type="checkbox"] {
   position: absolute;
   opacity: 0;
   cursor: inherit;
@@ -152,7 +169,9 @@ input:checked + .prod-family:before {
 input:checked + .prod-family-img + img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #bdbdff;
-}
+} */
+
+/* /////////////////////////////////////////////////////// */
 
 /* Retrieve Previous page */
 /* CSS goes here */
