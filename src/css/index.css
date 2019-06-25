@@ -86,6 +86,74 @@ input#productSOW.form-checkbox {
   margin-right: 10px;
 }
 
+/* checkbox with image */
+
+/* .prod-family {
+  display: inline-block;
+  padding: 10px;
+
+  position: relative;
+  width: 230px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  height: 30px;
+}
+
+/* .prod-checkbox {
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
+}  */
+
+label {
+  display: inline-block;
+}
+
+img {
+  width: 150px;
+  height: 180px;
+}
+
+.prod-family > input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: inherit;
+}
+.prod-family {
+  font-weight: normal;
+  cursor: pointer;
+}
+.prod-family:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+  background: #fff;
+  color: transparent;
+  border: 3px solid #ddd;
+  border-radius: 3px;
+  z-index: 1;
+}
+.prod-family-label:hover > .prod-family:before,
+input:focus + .prod-family:before {
+  border-color: #bdbdff;
+}
+.prod-family-label:hover > input:not(:checked) + .prod-family:before {
+  color: #eee;
+}
+input:checked + .prod-family:before {
+  color: #fff;
+  background: #bdbdff;
+  border-color: #bdbdff;
+}
+.prod-family-img:before {
+  position: absolute;
+  margin: 3px;
+  line-height: normal;
+}
+input:checked + .prod-family-img + img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #bdbdff;
+}
+
 /* Retrieve Previous page */
 /* CSS goes here */
 

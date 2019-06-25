@@ -100,6 +100,13 @@ let PdfGenFormContainerRedux = (props) => {
                 {props.hasProductSowValue && (
                   <div>
                     <Field
+                      name="prodSowCheckboxes"
+                      className="form-checkbox"
+                      type="checkbox"
+                      component={ProdSOWExtOptionsDropdown}
+                      label="Select a Product Family"
+                    />
+                    {/* <Field
                       name="extCustComponentDropdown"
                       type="input"
                       component={ProdSOWExtOptionsDropdown}
@@ -140,7 +147,7 @@ let PdfGenFormContainerRedux = (props) => {
                           ]
                         }
                       ]}
-                    />
+                    /> */}
                   </div>
                 )}
               </label>

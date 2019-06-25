@@ -3,6 +3,12 @@ import { connect } from "react-redux";
 
 import { change, Field, formValueSelector, reduxForm } from "redux-form";
 
+//images
+// import QuantumDXiBackup from "/Users/Charlie/Web_Projects/";
+import quantumDXiBackup from "../../../images/quantumDXiBackup.jpg";
+import quantumEncryptionKeyManager from "../../../images/quantumEncryptionKeyManager.jpg";
+import quantumLATTUSStorage from "../../../images/quantumLATTUSStorage.jpg";
+
 class ProdSOWExtOptionsDropdown extends React.Component {
   // constructor(props) {
   //   super(props);
@@ -41,6 +47,18 @@ class ProdSOWExtOptionsDropdown extends React.Component {
     ));
   };
 
+  displayConfiguration = () => {
+    console.log("hello");
+    if (this.props.hasProduct[this.props.id]) {
+      return this.props.options.map((prod) => (
+        // console.log(prod.id, prod.product)
+        <option key={prod.id} value={prod.productConfig}>
+          {prod.productConfig}
+        </option>
+      ));
+    }
+  };
+
   render() {
     const { input, label, options, hasProduct } = this.props;
     console.log(input);
@@ -53,6 +71,45 @@ class ProdSOWExtOptionsDropdown extends React.Component {
           <label className="checkbox-group">
             {" "}
             <div>
+              <label className="prod-family-label">
+                <Field
+                  name="DXi Products"
+                  /* className="prod-checkbox" */
+                  type="checkbox"
+                  component="input"
+                />
+                <img src={quantumDXiBackup} alt="A DXi Backup machine" />
+                <span className="prod-family prod-family-img"></span>
+                DXi Products{" "}
+              </label>
+
+              <label className="prod-family-label">
+                <Field
+                  name="Encryption Key Manager Products"
+                  /* className="form-checkbox" */
+                  type="checkbox"
+                  component="input"
+                />
+                <img
+                  src={quantumEncryptionKeyManager}
+                  alt="quantumEncryptionKeyManager"
+                />
+                <span className="prod-family prod-family-img"></span>
+                Encryption Key Manager Products{" "}
+              </label>
+
+              <label className="prod-family-label">
+                <Field
+                  name="LATTUS"
+                  /* className="form-checkbox" */
+                  type="checkbox"
+                  component="input"
+                />
+                <img src={quantumLATTUSStorage} alt="quantumLATTUSStorage" />
+                <span className="prod-family prod-family-img"></span>
+                LATTUS{" "}
+              </label>
+
               {/* component={({ input, options }) =>
                 options.map((option) => (
                   <label key={option.id}>
@@ -68,27 +125,31 @@ class ProdSOWExtOptionsDropdown extends React.Component {
                   </label>
                 ))
               } */}
-              Product Selection:{" "}
-              <select {...input}>{this.displayProducts()}</select>
+              {/* Product Selection:{" "}
+              <select {...input}>
+                onChange=
+                {this.displayProducts()}
+              </select> */}
             </div>
-            {this.props.hasProduct && (
+            {/* {this.props.hasProduct && (
               <div>
                 Product Configuration:{" "}
-                {/* <Field
+                <Field
                   name="productConfigurationOptions"
                   type="input"
                   component="input"
                   label="test hidden item"
                   placeholder="Should appear when an opt selected"
-                /> */}
+                />
                 <Field name="productConfigurationOptions" component="select">
                   <option>Select a Product Configuration</option>
                   <option value="Red">Red</option>
                   <option value="Green">Green</option>
                   <option value="Blue">Blue</option>
+                  {this.displayConfiguration()}
                 </Field>
               </div>
-            )}
+            )} */}
             {/* <Field name="productFamily" component="select">
               <option>Select a Product Family</option>
               <option value="DXiProducts">DXi Products</option>
