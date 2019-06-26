@@ -18,7 +18,7 @@ const renderCustomServOption = (service, index, fields) => (
   <li key={index}>
     Customised Service {index + 1}:{" "}
     <Field
-      name={`${service}.customService`}
+      name={`${service}.customService${index + 1}`}
       key={index}
       type="text"
       component="input"

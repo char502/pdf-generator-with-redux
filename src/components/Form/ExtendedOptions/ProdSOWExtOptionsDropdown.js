@@ -89,79 +89,109 @@ class ProdSOWExtOptionsDropdown extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-3">
-                    <div className="thumbnail">
-                      <label className="prod-family-label">
-                        <img
-                          src={quantumDXiBackup}
-                          alt="A DXi Backup machine"
-                        />
-                        <Field
-                          name="DXi Products"
-                          className="prod-image-checkbox text-center"
-                          type="checkbox"
-                          component="input"
-                        />
-                        <div className="caption text-center">
-                          <p>DXi Products</p>
-                        </div>
-                      </label>
+                    <div className="thumbnail form-group">
+                      <img src={quantumDXiBackup} alt="A DXi Backup machine" />
+                      <Field
+                        name="DXi Products"
+                        className="prod-image-checkbox text-center"
+                        type="checkbox"
+                        component="input"
+                      />
+                      <div className="caption text-center">
+                        <p>DXi Products</p>
+
+                        {this.props.DXiProductsCheckbox && (
+                          <span>
+                            <div>
+                              <Field
+                                name="prodConfigOptionDxi"
+                                className="prod-selector"
+                                component="select"
+                              >
+                                <option>Select a Product Configuration</option>
+                                <option value="OptionOneDXi">
+                                  Option One DXi
+                                </option>
+                                <option value="OptionTwoDXi">
+                                  Option Two DXi
+                                </option>
+                                <option value="OptionThreeDXi">
+                                  Option Three DXi
+                                </option>
+                                {/* {this.displayConfiguration()} */}
+                              </Field>
+                            </div>
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <div className="col-md-3">
-                    <div className="thumbnail">
-                      <label className="prod-family-label">
-                        <img
-                          src={quantumEncryptionKeyManager}
-                          alt="quantumEncryptionKeyManager"
-                        />
-                        <Field
-                          name="DXi Products"
-                          className="prod-checkbox"
-                          type="checkbox"
-                          component="input"
-                        />
-                        <div className="caption text-center">
-                          <p>Encryption Key Manager Products</p>
-                        </div>
-                      </label>
+                    <div className="thumbnail form-group">
+                      <img
+                        src={quantumEncryptionKeyManager}
+                        alt="quantumEncryptionKeyManager"
+                      />
+                      <Field
+                        name="Encryption Key Manager"
+                        className="prod-image-checkbox text-center"
+                        type="checkbox"
+                        component="input"
+                      />
+                      <div className="caption text-center">
+                        <p>Encryption Key Manager</p>
+                        {this.props.EncrypKeyManager && (
+                          <span>
+                            <div>
+                              <Field
+                                name="prodConfigOptionEncryp"
+                                className="prod-selector"
+                                component="select"
+                              >
+                                <option>Select a Product Configuration</option>
+                                <option value="OptionOneDXi">
+                                  Option One Encryp
+                                </option>
+                                <option value="OptionTwoDXi">
+                                  Option Two Encryp
+                                </option>
+                                <option value="OptionThreeDXi">
+                                  Option Three Encryp
+                                </option>
+                                {/* {this.displayConfiguration()} */}
+                              </Field>
+                            </div>
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-md-3">
+                    <img
+                      src={quantumLATTUSStorage}
+                      alt="quantumLATTUSStorage"
+                    />
+                    <Field
+                      name="DXi Products"
+                      className="prod-checkbox"
+                      type="checkbox"
+                      component="input"
+                    />
+                    <div className="caption text-center">
+                      <p>LATTUS</p>
                     </div>
                   </div>
                   <div className="col-md-3">
-                    <div className="thumbnail">
-                      <label className="prod-family-label">
-                        <img
-                          src={quantumLATTUSStorage}
-                          alt="quantumLATTUSStorage"
-                        />
-                        <Field
-                          name="DXi Products"
-                          className="prod-checkbox"
-                          type="checkbox"
-                          component="input"
-                        />
-                        <div className="caption text-center">
-                          <p>LATTUS</p>
-                        </div>
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-md-3">
-                    <div className="thumbnail">
-                      <label className="prod-family-label">
-                        <img
-                          src={quantumScalari3LTO}
-                          alt="quantumScalari3LTO"
-                        />
-                        <Field
-                          name="DXi Products"
-                          className="prod-checkbox"
-                          type="checkbox"
-                          component="input"
-                        />
-                        <div className="caption text-center">
-                          <p>Quantum Scalar i3LTO</p>
-                        </div>
-                      </label>
+                    <img src={quantumScalari3LTO} alt="quantumScalari3LTO" />
+                    <Field
+                      name="DXi Products"
+                      className="prod-checkbox"
+                      type="checkbox"
+                      component="input"
+                    />
+                    <div className="caption text-center">
+                      <p>Quantum Scalar i3LTO</p>
                     </div>
                   </div>
                 </div>
@@ -303,9 +333,13 @@ ProdSOWExtOptionsDropdown = connect((state) => {
     state,
     "productConfigurationOptions"
   );
+  const DXiProductsCheckbox = selector(state, "DXi Products");
+  const EncrypKeyManager = selector(state, "Encryption Key Manager");
   return {
     hasProduct,
-    hasProductConfigurationOptions
+    hasProductConfigurationOptions,
+    DXiProductsCheckbox,
+    EncrypKeyManager
   };
 })(ProdSOWExtOptionsDropdown);
 
