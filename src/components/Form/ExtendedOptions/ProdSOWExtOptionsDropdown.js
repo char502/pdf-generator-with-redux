@@ -126,6 +126,7 @@ class ProdSOWExtOptionsDropdown extends React.Component {
                       </div>
                     </div>
                   </div>
+
                   <div className="col-md-3">
                     <div className="thumbnail form-group">
                       <img
@@ -190,13 +191,13 @@ class ProdSOWExtOptionsDropdown extends React.Component {
                                 component="select"
                               >
                                 <option>Select a Product Configuration</option>
-                                <option value="optionOneLATTUS">
+                                <option value="OptionOneLattus">
                                   Option One LATTUS
                                 </option>
-                                <option value="optionTwoLATTUS">
+                                <option value="OptionTwoLattus">
                                   Option Two LATTUS
                                 </option>
-                                <option value="optionThreeLATTUS">
+                                <option value="OptionThreeLattus">
                                   Option Three LATTUS
                                 </option>
                                 {/* {this.displayConfiguration()} */}
@@ -386,7 +387,7 @@ ProdSOWExtOptionsDropdown = connect((state) => {
   );
   const hasDXiProductsCheckbox = selector(state, "DXi Products");
   const hasEncrypKeyManager = selector(state, "Encryption Key Manager");
-  const hasLattusStorage = selector(state, "LATTUS Storage");
+  const hasLattusStorage = selector(state, "Lattus Storage");
   const hasScalari3LTO = selector(state, "Scalari 3LTO");
   return {
     hasProduct,
