@@ -100,7 +100,7 @@ class ProdSOWExtOptionsDropdown extends React.Component {
                       <div className="caption text-center">
                         <p>DXi Products</p>
 
-                        {this.props.DXiProductsCheckbox && (
+                        {this.props.hasDXiProductsCheckbox && (
                           <span>
                             <div>
                               <Field
@@ -140,7 +140,7 @@ class ProdSOWExtOptionsDropdown extends React.Component {
                       />
                       <div className="caption text-center">
                         <p>Encryption Key Manager</p>
-                        {this.props.EncrypKeyManager && (
+                        {this.props.hasEncrypKeyManager && (
                           <span>
                             <div>
                               <Field
@@ -168,30 +168,81 @@ class ProdSOWExtOptionsDropdown extends React.Component {
                   </div>
 
                   <div className="col-md-3">
-                    <img
-                      src={quantumLATTUSStorage}
-                      alt="quantumLATTUSStorage"
-                    />
-                    <Field
-                      name="DXi Products"
-                      className="prod-checkbox"
-                      type="checkbox"
-                      component="input"
-                    />
-                    <div className="caption text-center">
-                      <p>LATTUS</p>
+                    <div className="thumbnail form-group">
+                      <img
+                        src={quantumLATTUSStorage}
+                        alt="Quantum LATTUS Storage"
+                      />
+                      <Field
+                        name="Lattus Storage"
+                        className="prod-image-checkbox text-center"
+                        type="checkbox"
+                        component="input"
+                      />
+                      <div className="caption text-center">
+                        <p>Quantum LATTUS Storage</p>
+                        {this.props.hasLattusStorage && (
+                          <span>
+                            <div>
+                              <Field
+                                name="prodConfigOptionLattus"
+                                className="prod-selector"
+                                component="select"
+                              >
+                                <option>Select a Product Configuration</option>
+                                <option value="optionOneLATTUS">
+                                  Option One LATTUS
+                                </option>
+                                <option value="optionTwoLATTUS">
+                                  Option Two LATTUS
+                                </option>
+                                <option value="optionThreeLATTUS">
+                                  Option Three LATTUS
+                                </option>
+                                {/* {this.displayConfiguration()} */}
+                              </Field>
+                            </div>
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
+
                   <div className="col-md-3">
-                    <img src={quantumScalari3LTO} alt="quantumScalari3LTO" />
-                    <Field
-                      name="DXi Products"
-                      className="prod-checkbox"
-                      type="checkbox"
-                      component="input"
-                    />
-                    <div className="caption text-center">
-                      <p>Quantum Scalar i3LTO</p>
+                    <div className="thumbnail form-group">
+                      <img src={quantumScalari3LTO} alt="quantumScalari3LTO" />
+                      <Field
+                        name="Scalari 3LTO"
+                        className="prod-image-checkbox text-center"
+                        type="checkbox"
+                        component="input"
+                      />
+                      <div className="caption text-center">
+                        <p>Quantum Scalari 3LTO</p>
+                        {this.props.hasScalari3LTO && (
+                          <span>
+                            <div>
+                              <Field
+                                name="prodConfigOptionScalari3LTO"
+                                className="prod-selector"
+                                component="select"
+                              >
+                                <option>Select a Product Configuration</option>
+                                <option value="OptionOneDXi">
+                                  Option One Scalari3LTO
+                                </option>
+                                <option value="OptionTwoDXi">
+                                  Option Two Scalari3LTO
+                                </option>
+                                <option value="OptionThreeDXi">
+                                  Option Three Scalari3LTO
+                                </option>
+                                {/* {this.displayConfiguration()} */}
+                              </Field>
+                            </div>
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -333,13 +384,17 @@ ProdSOWExtOptionsDropdown = connect((state) => {
     state,
     "productConfigurationOptions"
   );
-  const DXiProductsCheckbox = selector(state, "DXi Products");
-  const EncrypKeyManager = selector(state, "Encryption Key Manager");
+  const hasDXiProductsCheckbox = selector(state, "DXi Products");
+  const hasEncrypKeyManager = selector(state, "Encryption Key Manager");
+  const hasLattusStorage = selector(state, "LATTUS Storage");
+  const hasScalari3LTO = selector(state, "Scalari 3LTO");
   return {
     hasProduct,
     hasProductConfigurationOptions,
-    DXiProductsCheckbox,
-    EncrypKeyManager
+    hasDXiProductsCheckbox,
+    hasEncrypKeyManager,
+    hasLattusStorage,
+    hasScalari3LTO
   };
 })(ProdSOWExtOptionsDropdown);
 
