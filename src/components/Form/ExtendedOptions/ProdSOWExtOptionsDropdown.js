@@ -73,19 +73,6 @@ class ProdSOWExtOptionsDropdown extends React.Component {
           <label className="checkbox-group">
             {" "}
             <div>
-              {/* <container>
-                <row>
-                  <col xs={6} md={4}>
-                    <img src={quantumDXiBackup} alt="A DXi Backup machine" />
-                  </col>
-                  <col xs={6} md={4}>
-                    <img src={quantumDXiBackup} alt="A DXi Backup machine" />
-                  </col>
-                  <col xs={6} md={4}>
-                    <img src={quantumDXiBackup} alt="A DXi Backup machine" />
-                  </col>
-                </row>
-              </container> */}
               <div className="container">
                 <div className="row">
                   <div className="col-md-3">
@@ -150,13 +137,13 @@ class ProdSOWExtOptionsDropdown extends React.Component {
                                 component="select"
                               >
                                 <option>Select a Product Configuration</option>
-                                <option value="OptionOneDXi">
-                                  Option One Encryp
+                                <option value="OptionOneEncryp">
+                                  OptionOneEncryp
                                 </option>
-                                <option value="OptionTwoDXi">
+                                <option value="OptionTwoEncryp">
                                   Option Two Encryp
                                 </option>
-                                <option value="OptionThreeDXi">
+                                <option value="OptionThreeEncryp">
                                   Option Three Encryp
                                 </option>
                                 {/* {this.displayConfiguration()} */}
@@ -229,13 +216,13 @@ class ProdSOWExtOptionsDropdown extends React.Component {
                                 component="select"
                               >
                                 <option>Select a Product Configuration</option>
-                                <option value="OptionOneDXi">
+                                <option value="OptionOneScalari3LTO">
                                   Option One Scalari3LTO
                                 </option>
-                                <option value="OptionTwoDXi">
+                                <option value="OptionTwoScalari3LTO">
                                   Option Two Scalari3LTO
                                 </option>
-                                <option value="OptionThreeDXi">
+                                <option value="OptionThreeScalari3LTO">
                                   Option Three Scalari3LTO
                                 </option>
                                 {/* {this.displayConfiguration()} */}
