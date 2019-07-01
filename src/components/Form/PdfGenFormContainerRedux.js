@@ -13,14 +13,48 @@ import TeradataExtOptions from "./ExtendedOptions/TeradataExtOptions";
 import ProdSOWExtOptionsDropdown from "./ExtendedOptions/ProdSOWExtOptionsDropdown";
 // import PropTypes from "prop-types";
 
+// async function submitToServer(formValues) {
+//   try {
+//     let response = await fetch("http://localhost:3030/sows", {
+//       method: "POST",
+//       headers: {
+//         "Content-type": "application/json"
+//       },
+//       body: JSON.stringify(formValues)
+//     });
+//     let responseJson = await response.json();
+//     return responseJson;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
 let PdfGenFormContainerRedux = (props) => {
   console.log(props);
 
+  async function submitToServer(formValues) {
+    try {
+      let response = await fetch("http://localhost:3030/sows", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(formValues)
+      });
+      let responseJson = await response.json();
+      return responseJson;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const submitForm = (formValues) => {
     console.log("Submission Info: ", formValues);
+
     // console.log(formValues.productSOW);
     // console.log(values.serviceRegion);
     // console.log(values.teradataExtCustComponent);
+    submitToServer(formValues).then((formValues) => console.log(formValues));
   };
 
   // const clearForm = () => {
