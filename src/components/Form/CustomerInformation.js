@@ -2,8 +2,13 @@ import React from "react";
 // import { Field } from "redux-form";
 // import PropTypes from "prop-types";
 
-const CustomerInformation = ({ placeholder, input }) => {
-  // console.log(input);
+const CustomerInformation = ({
+  placeholder,
+  input,
+  meta,
+  meta: { error, touched }
+}) => {
+  console.log(meta);
   return (
     <div>
       <div className="form-label" />
@@ -16,6 +21,8 @@ const CustomerInformation = ({ placeholder, input }) => {
           placeholder={placeholder}
           style={"resize" ? null : { resize: "none" }}
         />
+        {touched && error && <div style={{ color: "#8c1313" }}>{error}</div>}
+        {/* {error && touched && <div style={{ color: "#8c1313" }}>{error}</div>} */}
       </div>
     </div>
   );

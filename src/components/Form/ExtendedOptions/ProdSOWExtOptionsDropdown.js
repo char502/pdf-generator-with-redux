@@ -12,33 +12,6 @@ import quantumLATTUSStorage from "../../../images/quantumLATTUSStorage.jpg";
 import quantumScalari3LTO from "../../../images/quantumScalari3LTO.jpg";
 
 class ProdSOWExtOptionsDropdown extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   if (this.props.product !== prevProps.product) {
-  //     // this.props.dispatch(change("form", "productConfigurationOptions", ""));
-  //     alert("option changed to: ", this.props.productFamily);
-  //   }
-  // }
-
-  // componentWillUpdate(nextProps) {
-  //   if (
-  //     this.props.hasProduct !== "Select a Product Family" /*nextProps.product */
-  //   ) {
-  //     this.props.dispatch(change("form", "productConfigurationOptions", ""));
-  //     // alert("option changed to: ", this.props.productFamily);
-
-  //     // console.log("option changed to: ", nextProps);
-  //     console.log("option was: ", this.props.hasProduct);
-  //     console.log("option now is: ", nextProps.hasProduct);
-  //     console.log(
-  //       "prod config options: ",
-  //       this.props.productConfigurationOptions
-  //     );
-  //   }
-  // }
-
   displayProducts = () => {
     // console.log(this.props.options);
     return this.props.options.map((prod) => (
@@ -64,7 +37,7 @@ class ProdSOWExtOptionsDropdown extends React.Component {
   render() {
     const { input, label, options, hasProduct } = this.props;
     console.log(input);
-    console.log(hasProduct);
+    // console.log(hasProduct);
     // console.log(options);
     return (
       <div className="form-group">

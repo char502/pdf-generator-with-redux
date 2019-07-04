@@ -6,7 +6,9 @@ import createReducer from "../redux/reducers/createReducer";
 // import { composeWithDevTools } from "redux-devtools-extension";
 
 // import formReducer from "../redux/reducers/_formReducer";
-// import thunk from "redux-thunk";
+import thunk from "redux-thunk";
+
+const initialState = {};
 
 const composeEnhancers =
   typeof window === "object" &&
@@ -15,10 +17,10 @@ const composeEnhancers =
     : compose);
 
 export function configureStore() {
-  const middlewares = [];
+  const middlewares = [thunk];
   const store = createStore(
     createReducer(),
-    {},
+    initialState,
     composeEnhancers(applyMiddleware(...middlewares))
   );
   return store;

@@ -38,6 +38,10 @@ input.form-radiobuttons {
   margin-right: 10px;
 }
 
+label.form-radiobuttons {
+  margin-right: 5px;
+}
+
 div.radio-group {
   margin-left: 30px;
   margin-bottom: 10px;
@@ -49,6 +53,10 @@ div.radio-group label {
   border-radius: 5px;
   border-width: 1px;
 }
+
+/* .radio-button-align {
+  display: inline-block;
+} */
 
 input.form-checkbox {
   margin-right: 10px;
@@ -163,6 +171,14 @@ div.thumbnail.form-group {
   border: solid #228abd;
 }
 
+/* div.error {
+  color: "#8c1313";
+} */
+
+.col-red {
+  color: #8c1313;
+}
+
 /* /////////////////////////////////////////////////////// */
 
 /* .prod-family > input[type="checkbox"] {
@@ -204,6 +220,10 @@ input:checked + .prod-family-img + img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #bdbdff;
 } */
+
+.btnSpacing {
+  margin: 0 10px 0 0;
+}
 
 /* /////////////////////////////////////////////////////// */
 
