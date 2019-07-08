@@ -17,21 +17,21 @@ import required from "../../validation/index.js";
 // import submitToServer from './server'
 // import PropTypes from "prop-types";
 
-// async function submitToServer(formValues) {
-//   try {
-//     let response = await fetch("http://localhost:3030/sows", {
-//       method: "POST",
-//       headers: {
-//         "Content-type": "application/json"
-//       },
-//       body: JSON.stringify(formValues)
-//     });
-//     let responseJson = await response.json();
-//     return responseJson;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+async function submitToServer(formValues) {
+  try {
+    let response = await fetch("http://localhost:3030/sows", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(formValues)
+    });
+    let responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 // const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
 //   <div>
@@ -43,26 +43,65 @@ import required from "../../validation/index.js";
 //   </div>
 // )
 
+const renderError = ({ input, meta, ...props }) => (
+  <span {...props} className="error">
+    {meta.touched && meta.error && (
+      <div style={{ color: "#8c1313" }}>{meta.error}</div>
+    )}
+  </span>
+);
+
 class PdfGenFormContainerRedux extends React.Component {
+  // Submitting the form
   submitForm = (
     formValues,
-    { serviceRegion = "", customerInformation = "" }
+    {
+      serviceRegion = "",
+      customerInformation = "",
+      productSOW = "",
+      teradata = "",
+      customExtOptions = "",
+      myInput
+    }
   ) => {
     console.log("Submission Info: ", formValues);
+    console.log(this.props.error);
+    // console.log(this.props.hasProductSowValue);
     // console.log(this.submitForm);
+
+    // const sowTypeCheckboxValues = {
+    //   productSOW: productSOW
+    // };
+
+    // console.log(sowTypeCheckboxValues);
 
     let error = {};
     let isError = false;
 
     if (serviceRegion === "") {
-      error.serviceRegion = "Required";
+      error.serviceRegion = "Please select a Service Region";
       isError = true;
     }
 
     if (customerInformation === "") {
-      error.customerInformation = "Required";
+      error.customerInformation = "Please Enter Customer Information";
       isError = true;
     }
+
+    if (productSOW === "" && teradata === "" && customExtOptions === "") {
+      error.myInput = "Please select at least one checkbox";
+      isError = true;
+    }
+
+    console.log(error);
+    // this.props.hasProductSowValue
+    // this.props.hasTeradataExtOptionsValue
+    // this.props.hasCustomProfExtOptionsValue
+
+    // if (productSOW && teradata && customExtOptions === "") {
+    //   error.customerInformation = "Required";
+    //   isError = true;
+    // }
 
     if (isError) {
       throw new SubmissionError(error);
@@ -74,6 +113,9 @@ class PdfGenFormContainerRedux extends React.Component {
     // console.log(formValues.productSOW);
     // console.log(values.serviceRegion);
     // console.log(values.teradataExtCustComponent);
+
+    // submitToServer(formValues)
+
     // submitToServer(formValues).then((formValues) => console.log(formValues));
     // need a reset in here as well
 
@@ -131,33 +173,7 @@ class PdfGenFormContainerRedux extends React.Component {
                     { label: "NA & LATAM", value: "naAndLatam" }
                   ]}
                   /* validate={required} */
-
-                  /* options={{
-                    emea: "EMEA",
-                    apac: "APAC",
-                    naAndLatam: "NA & LATAM"
-                  }} */
                 />
-                {/* {this.props.touched && this.props.error && (
-                  <div>{this.props.error}</div>
-                )} */}
-                {/* {props.meta.error && props.meta.touched && (
-                  <span className="error" style={{ color: "#8c1313" }}>
-                    {props.meta.error}
-                  </span>
-                )} */}
-                {/* <ServiceRegionRadioBtns
-                name="serviceRegion"
-                label="Service Region"
-                component="input"
-                options={[
-                  { id: 0, label: "EMEA", value: "EMEA" },
-                  { id: 1, label: "APAC", value: "APAC" },
-                  { id: 2, label: "NA & LATAM", value: "NA & LATAM" }
-                ]}
-                validate={validate}
-              /> */}
-                {/* {props.touched && (props.error && <div>{props.error}</div>)} */}
               </div>
             </div>
           </div>
@@ -311,7 +327,13 @@ class PdfGenFormContainerRedux extends React.Component {
                   )}
                 </label>
               </div>
+              <div className="errorContainer">
+                <Field name="myInput" component={renderError} />
+              </div>
             </div>
+            {/* {this.props.touched && this.props.error && (
+              <div style={{ color: "#8c1313" }}>{this.props.error}Hello</div>
+            )} */}
           </div>
 
           <div>

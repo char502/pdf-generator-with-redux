@@ -35,7 +35,14 @@ class ProdSOWExtOptionsDropdown extends React.Component {
   };
 
   render() {
-    const { input, label, options, hasProduct } = this.props;
+    const {
+      input,
+      label,
+      options,
+      hasProduct,
+      meta,
+      meta: { touched, error }
+    } = this.props;
     console.log(input);
     // console.log(hasProduct);
     // console.log(options);
@@ -208,118 +215,7 @@ class ProdSOWExtOptionsDropdown extends React.Component {
                   </div>
                 </div>
               </div>
-
-              {/* <div className="col-md-4">
-                <label className="prod-family-label">
-                  <Field
-                    name="DXi Products"
-                    className="prod-checkbox"
-                    type="checkbox"
-                    component="input"
-                  />
-                  <img src={quantumDXiBackup} alt="A DXi Backup machine" />
-                  <span className="prod-family prod-family-img"></span>
-                  DXi Products{" "}
-                </label>
-              </div>
-              <div className="col-md-4">
-                <label className="prod-family-label">
-                  <Field
-                    name="Encryption Key Manager Products"
-                    className="form-checkbox"
-                    type="checkbox"
-                    component="input"
-                  />
-                  <img
-                    src={quantumEncryptionKeyManager}
-                    alt="quantumEncryptionKeyManager"
-                  />
-                  <span className="prod-family prod-family-img"></span>
-                  Encryption Key Manager Products{" "}
-                </label>
-              </div>
-              <div className="col-md-4">
-                <label className="prod-family-label">
-                  <Field
-                    name="LATTUS"
-                    className="form-checkbox"
-                    type="checkbox"
-                    component="input"
-                  />
-                  <img src={quantumLATTUSStorage} alt="quantumLATTUSStorage" />
-                  <span className="prod-family prod-family-img"></span>
-                  LATTUS{" "}
-                </label>
-              </div> */}
-
-              {/* component={({ input, options }) =>
-                options.map((option) => (
-                  <label key={option.id}>
-                    <input
-                      className="form-radiobuttons"
-                      id={option.id}
-                      type="radio"
-                      {...input}
-                      value={option.value}
-                      checked={option.value === input.value}
-                    />
-                    {option.label}
-                  </label>
-                ))
-              } */}
-              {/* Product Selection:{" "}
-              <select {...input}>
-                onChange=
-                {this.displayProducts()}
-              </select> */}
             </div>
-            {/* {this.props.hasProduct && (
-              <div>
-                Product Configuration:{" "}
-                <Field
-                  name="productConfigurationOptions"
-                  type="input"
-                  component="input"
-                  label="test hidden item"
-                  placeholder="Should appear when an opt selected"
-                />
-                <Field name="productConfigurationOptions" component="select">
-                  <option>Select a Product Configuration</option>
-                  <option value="Red">Red</option>
-                  <option value="Green">Green</option>
-                  <option value="Blue">Blue</option>
-                  {this.displayConfiguration()}
-                </Field>
-              </div>
-            )} */}
-            {/* <Field name="productFamily" component="select">
-              <option>Select a Product Family</option>
-              <option value="DXiProducts">DXi Products</option>
-              <option value="EncryptionKeyManagerProducts">
-                Encryption Key Manager Products
-              </option>
-              <option value="LATTUS">LATTUS</option>
-              <option value="OtherProductsBrocade">
-                Other Products (Brocade)
-              </option>
-              <option value="QXSDiskSystems">
-                QXS Disk Systems, StorNext Q-Series Disk and StorNext
-                QX/QXS-Series Disk
-              </option>
-              <option value="ScalarProducts">Scalar Products</option>
-              <option value="StorNextAELArchives">StorNext AEL Archives</option>
-              <option value="StorNextAppliances">
-                StorNext Appliances, Xcellis and Artico (AEL and Disk in
-                seperate sections)
-              </option>
-              <option value="StorNextProSolutionInstallation">
-                StorNext ProSolution Installation
-              </option>
-              <option value="StorNextSoftwareAndServices">
-                StorNext Software and Professional Services
-              </option>
-              <option value="SuperLoader3">SuperLoader 3</option>
-            </Field> */}
           </label>
         </div>
 
@@ -328,6 +224,8 @@ class ProdSOWExtOptionsDropdown extends React.Component {
           name="testArray"
           component={}
         /> */}
+
+        {/* {touched && error && <div style={{ color: "#8c1313" }}>{error}</div>} */}
       </div>
     );
   }
