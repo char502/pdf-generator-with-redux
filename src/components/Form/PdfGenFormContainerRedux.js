@@ -12,7 +12,7 @@ import CustomerInformation from "./CustomerInformation";
 import CustomProfExtOptions from "./ExtendedOptions/CustomProfExtOptions";
 import TeradataExtOptions from "./ExtendedOptions/TeradataExtOptions";
 import ProdSOWExtOptionsDropdown from "./ExtendedOptions/ProdSOWExtOptionsDropdown";
-import required from "../../validation/index.js";
+// import required from "../../validation/index.js";
 // import serverCommsReducer from '../../redux/actions/serverCommAction'
 // import submitToServer from './server'
 // import PropTypes from "prop-types";
@@ -43,13 +43,31 @@ async function submitToServer(formValues) {
 //   </div>
 // )
 
+// const renderError = ({ input, meta, ...props }) => (
+//   <span {...props} className="error">
+//     {meta.touched && meta.error && (
+//       <div style={{ color: "#8c1313" }}>{meta.error}</div>
+//     )}
+//   </span>
+// );
+
+// const renderError = ({ input, meta, ...props }) => (
+//   <span>
+//     {<div> {...input} {...props} className={meta.error ? "error" : null}</div>}
+//   </span>
+// );
+
 const renderError = ({ input, meta, ...props }) => (
-  <span {...props} className="error">
-    {meta.touched && meta.error && (
-      <div style={{ color: "#8c1313" }}>{meta.error}</div>
-    )}
-  </span>
+  <div {...input} {...props} className={meta.error ? "error" : null} />
 );
+
+// const renderError = ({ input, meta, ...props }) => (
+//   <span {...props} className="error">
+//     {meta.touched && meta.error && (
+//       <div style={{ color: "#8c1313" }}>{meta.error ? meta.error : null}</div>
+//     )}
+//   </span>
+// );
 
 class PdfGenFormContainerRedux extends React.Component {
   // Submitting the form
@@ -66,7 +84,9 @@ class PdfGenFormContainerRedux extends React.Component {
   ) => {
     console.log("Submission Info: ", formValues);
     console.log(this.props.error);
-    // console.log(this.props.hasProductSowValue);
+    console.log(this.props.hasProductSowValue);
+    console.log(this.props.hasTeradataExtOptionsValue);
+    // console.log(hasProductSowValue);
     // console.log(this.submitForm);
 
     // const sowTypeCheckboxValues = {
@@ -92,6 +112,19 @@ class PdfGenFormContainerRedux extends React.Component {
       error.myInput = "Please select at least one checkbox";
       isError = true;
     }
+
+    // if (
+    //   this.props.hasProductSowValue !== true &&
+    //   this.props.hasTeradataExtOptionsValue !== true &&
+    //   this.props.hasCustomProfExtOptionsValue !== true
+    // ) {
+    //   error.myInput = "Please select at least one checkbox";
+    //   isError = true;
+    // }
+
+    // this.props.hasProductSowValue
+    // this.props.hasTeradataExtOptionsValue
+    // this.props.hasCustomProfExtOptionsValue
 
     console.log(error);
     // this.props.hasProductSowValue
